@@ -17,7 +17,7 @@ public class PortWatcher {
         String input = scanner.next();
         while(!input.equals("`")) {
             observer.recieveMessage(input);
-            input = scanner.next();
+            input = scanner.nextLine();
         }
     }
     

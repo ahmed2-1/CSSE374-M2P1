@@ -11,6 +11,10 @@ public class API implements PortObserver {
     }
     
     public void recieveMessage(String message) {
+        JSONObject parsedJson = new JSONObject();
+        
+        //TODO: setup object
+        
         
     }
     
