@@ -15,6 +15,10 @@ public class PortWatcher {
     }
     
     public void listen() {
+        while(processInput());
+    }
+    
+    private boolean processInput() {
         
 		System.out.println(String.format("Processing order %d", currentOrder));
     	System.out.println("Please enter a drink name:");
@@ -23,12 +27,17 @@ public class PortWatcher {
     	String address = scanner.nextLine();
     	System.out.println("Please enter the zipcode:");
     	int zip = scanner.nextInt();
+    	scanner.nextLine();
     	
     	Order o = new Order(currentOrder++, address, zip, drink);
     	
     	observer.recieveOrder(o);
     	System.out.println();
-    	
+    	    	
+        System.out.println("Continue? (y/n)");
+        String cont = scanner.nextLine();
+        System.out.println(cont);
+        return cont.equals("y");
     	
     }
     
