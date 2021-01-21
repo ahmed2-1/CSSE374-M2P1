@@ -26,6 +26,10 @@ public class API implements PortObserver {
         DrinkResponse machineResponse = target.trySendCommand(command);
         userResponse = responseProcessor.processResponse(machineResponse, command.coffeeID);
         
+        sendUserResponse(userResponse);
+    }
+
+    private void sendUserResponse(UserResponse userResponse) {
         System.out.println(userResponse);
     }
     
