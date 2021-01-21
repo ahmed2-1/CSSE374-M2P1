@@ -22,7 +22,7 @@ public class SimpleController implements Controller {
 		}
 		*/
 		DrinkResponse response = new DrinkResponse(command.orderID, 0);
-		
+		counter++;
 		return response;
 		
 	}
