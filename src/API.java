@@ -1,9 +1,14 @@
 
 public class API implements PortObserver {
 
+    ControllerProcessor controllerProcessor;
+    OrderProcessor orderProcessor;
     PortWatcher portWatcher;
     
     public API() {
+        
+        orderProcessor = new OrderProcessor();
+        controllerProcessor = new ControllerProcessor();
         
         portWatcher = new PortWatcher(800, this);
         portWatcher.listen();
@@ -12,14 +17,10 @@ public class API implements PortObserver {
 
     @Override
     public void recieveOrder(Order order) {
-        // TODO Auto-generated method stub
         
-    }
-
-    @Override
-    public void recieveCommand(Command command) {
-        // TODO Auto-generated method stub
-        
+        Command command = orderProcessor.processOrder(order);
+        Controller target =  controllerProcessor.getAssignedController(command);
+        //TODO: apply command to target
     }
 
     @Override
