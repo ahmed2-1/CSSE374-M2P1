@@ -10,7 +10,7 @@ public abstract class Controller {
         try {
             result = recieveCommand(command);
         } catch (TimeoutException e) {
-            result = new DrinkResponse(command.orderID, 0, 1, "Timed out");
+            result = new DrinkResponse(command.orderID, 1, 1, "Timed out");
         }
         
         return result;

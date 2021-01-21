@@ -1,3 +1,4 @@
+import java.util.concurrent.TimeoutException;
 
 public class SimpleController extends Controller {
 	private int counter;
@@ -6,23 +7,21 @@ public class SimpleController extends Controller {
 		counter = 0;
 	}
 	
-	public DrinkResponse recieveCommand(Command command) {
+	public DrinkResponse recieveCommand(Command command) throws TimeoutException {
 		
-		/*
-		boolean fail = false;
-		if (counter % 5 == 0) {
-			fail = true;
-		}
-		
-		
+	    
 		DrinkResponse response;
-		if (fail) {
-			response = new DrinkResponse(command.orderID, 0, 20, "Machine Jammed");
-		} else {
+		if (counter % 3 == 1) {
+			response = new DrinkResponse(command.orderID, 1, 20, "Machine Jammed");
+		}
+		else if (counter % 3 == 2) {
+		    throw new TimeoutException();
+		}
+		else {
 			response = new DrinkResponse(command.orderID, 0);
 		}
-		*/
-		DrinkResponse response = new DrinkResponse(command.orderID, 0);
+		
+		//DrinkResponse response = new DrinkResponse(command.orderID, 0);
 		counter++;
 		return response;
 		
