@@ -2,6 +2,7 @@
 public class API implements PortObserver {
 
     ControllerProcessor controllerProcessor;
+    ResponseProcessor responseProcessor;
     OrderProcessor orderProcessor;
     PortWatcher portWatcher;
     
@@ -9,6 +10,7 @@ public class API implements PortObserver {
         
         orderProcessor = new OrderProcessor();
         controllerProcessor = new ControllerProcessor();
+        responseProcessor =  new ResponseProcessor();
         
         portWatcher = new PortWatcher(800, this);
         portWatcher.listen();
@@ -18,21 +20,13 @@ public class API implements PortObserver {
     @Override
     public void recieveOrder(Order order) {
         
+        UserResponse userResponse;
         Command command = orderProcessor.processOrder(order);
         Controller target =  controllerProcessor.getAssignedController(command);
-        //TODO: apply command to target
-    }
-
-    @Override
-    public void recieveUserResponse(UserResponse response) {
-        // TODO Auto-generated method stub
+        DrinkResponse machineResponse = target.trySendCommand(command);
+        userResponse = responseProcessor.processResponse(machineResponse, command.coffeeID);
         
-    }
-
-    @Override
-    public void recieveDrinkResponse(DrinkResponse response) {
-        // TODO Auto-generated method stub
-        
+        System.out.println(userResponse);
     }
     
 }

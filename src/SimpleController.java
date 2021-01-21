@@ -1,5 +1,5 @@
 
-public class SimpleController implements Controller {
+public class SimpleController extends Controller {
 	private int counter;
 	
 	SimpleController() {
@@ -7,7 +7,7 @@ public class SimpleController implements Controller {
 	}
 	
 	public DrinkResponse recieveCommand(Command command) {
-		//d
+		
 		/*
 		boolean fail = false;
 		if (counter % 5 == 0) {

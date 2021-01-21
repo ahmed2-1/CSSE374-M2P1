@@ -1,7 +1,23 @@
+import java.util.concurrent.TimeoutException;
 
-public interface Controller {
+public abstract class Controller {
 	
-	public DrinkResponse recieveCommand(Command command);
+    private final int timeoutSeconds = 30;
+    
+    public DrinkResponse trySendCommand(Command command) {
+        
+        DrinkResponse result;
+        try {
+            result = recieveCommand(command);
+        } catch (TimeoutException e) {
+            result = new DrinkResponse(command.orderID, 0, 1, "Timed out");
+        }
+        
+        return result;
+        
+    }
+    
+	abstract DrinkResponse recieveCommand(Command command) throws TimeoutException;
 	
 	
 }

@@ -1,5 +1,5 @@
 
-public class AdvancedController implements Controller {
+public class AdvancedController extends Controller {
 	private int counter;
 	
 	AdvancedController() {
