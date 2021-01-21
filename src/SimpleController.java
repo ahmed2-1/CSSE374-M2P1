@@ -7,6 +7,7 @@ public class SimpleController implements Controller {
 	}
 	
 	public DrinkResponse recieveCommand(Command command) {
+		//ddd
 		/*
 		boolean fail = false;
 		if (counter % 5 == 0) {
