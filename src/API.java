@@ -9,12 +9,28 @@ public class API implements PortObserver {
         portWatcher.listen();
         
     }
-    
-    public void recieveMessage(String message) {
-        JSONObject parsedJson = new JSONObject();
+
+    @Override
+    public void recieveOrder(Order order) {
+        // TODO Auto-generated method stub
         
-        //TODO: setup object
+    }
+
+    @Override
+    public void recieveCommand(Command command) {
+        // TODO Auto-generated method stub
         
+    }
+
+    @Override
+    public void recieveUserResponse(UserResponse response) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void recieveDrinkResponse(DrinkResponse response) {
+        // TODO Auto-generated method stub
         
     }
     

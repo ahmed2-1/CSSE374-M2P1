@@ -9,7 +9,7 @@ public class JSONObject {
         this.keys = new HashMap<String, String>();
     }
     
-    public void setCommand(String command) {
+    void setCommand(String command) {
         this.command = command;
     }
     
@@ -17,7 +17,7 @@ public class JSONObject {
         return command;
     }
     
-    public void addValue(String key, String value) {
+    private void addValue(String key, String value) {
         keys.put(key, value);
     }
     
