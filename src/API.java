@@ -22,7 +22,7 @@ public class API implements PortObserver {
         
         UserResponse userResponse;
         Command command = orderProcessor.processOrder(order);
-        Controller target =  controllerProcessor.getAssignedController(command);
+        Controller target = controllerProcessor.getAssignedController(command);
         DrinkResponse machineResponse = target.trySendCommand(command);
         userResponse = responseProcessor.processResponse(machineResponse, command.coffeeID);
         

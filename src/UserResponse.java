@@ -21,4 +21,8 @@ public class UserResponse {
 		this.statusMessage = "Your coffee order has been cancelled.";
 		this.errorMessage = errorMessage;
 	}
+	
+	public String toString() {
+	    return String.format("orderID: %d\nStatus Message: %s\nError: %s" , orderID, status, errorMessage);
+	}
 }
