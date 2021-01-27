@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+import com.github.cliftonlabs.json_simple.JsonObject;
+import com.github.cliftonlabs.json_simple.Jsoner;
+
 public class PortWatcher {
 
     private int port;
@@ -19,6 +22,10 @@ public class PortWatcher {
     }
     
     private boolean processInput() {
+    	
+    	JsonObject input = new JsonObject();
+    	
+    	
         
 		System.out.println(String.format("Processing order %d", currentOrder));
     	System.out.println("Please enter a drink name:");
