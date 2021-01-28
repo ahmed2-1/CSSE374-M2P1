@@ -50,9 +50,6 @@ class APIOutput_Tests {
         JsonObject expectedControllerCommand = readFile(expectedControllerCommandPath);
         JsonObject expectedUserResponse = readFile(expectedUserResponsePath);
         
-        System.out.println(expectedControllerCommand);
-        System.out.println(readControllerCommandOutput());
-        
         
         assertEquals(expectedControllerCommand, readControllerCommandOutput(), "Expected command sent to controller differs from actual");
         assertEquals(expectedUserResponse, readUserResponseOutput(), "Expected response sent to user differs from actual");
@@ -62,13 +59,19 @@ class APIOutput_Tests {
     @Test
     void testAdvancedSuccess() {
         //TODO: make not refer to itself
-        testWithInputs("src/jsons/order1.json", controllerCommandPath, userResponsePath, "src/data/controllers.txt");
+        testWithInputs("src/jsons/order1.json", controllerCommandPath, userResponsePath, "src/data/test-controllers1.txt");
     }
     
     @Test
     void testSimpleSuccess() {
         //TODO: make not refer to itself
-        testWithInputs("src/jsons/order2.json", controllerCommandPath, userResponsePath, "src/data/controllers.txt");
+        testWithInputs("src/jsons/order2.json", controllerCommandPath, userResponsePath, "src/data/test-controllers1.txt");
+    }
+    
+    @Test
+    void testAssignmentFailure() {
+        //controller command is not sent, does not need to be tested so it is compared to itself
+        testWithInputs("src/jsons/order1.json", controllerCommandPath, "src/jsons/user-response3.json", "src/data/test-controllers2.txt");
     }
 
 }
