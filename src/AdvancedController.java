@@ -38,7 +38,6 @@ public class AdvancedController extends Controller {
 			writer.write(str);
 			writer.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	
