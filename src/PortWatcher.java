@@ -28,10 +28,10 @@ public class PortWatcher {
     }
     
     private boolean processInput() {
-    	
+    	currentOrder++;
     	JsonObject input = new JsonObject();
     	try {
-			FileReader fr = new FileReader("src/jsons/order2.json");
+			FileReader fr = new FileReader(String.format("src/jsons/order%d.json", currentOrder));
 			input = (JsonObject) Jsoner.deserialize(fr);
 			fr.close();
 		} catch (Exception e) {

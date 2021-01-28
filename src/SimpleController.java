@@ -45,11 +45,11 @@ public class SimpleController extends Controller {
 		
     	JsonObject input = new JsonObject();
     	try {
-			FileReader fr = new FileReader("src/jsons/controller-response1.json");
+			FileReader fr = new FileReader(String.format("src/jsons/controller-response%d.json", command.orderID));
 			input = (JsonObject) Jsoner.deserialize(fr);
 			fr.close();
 		} catch (Exception e) {
-			System.out.println("File read error, make sure that the order exists and is formatted as a JSON object.");
+			System.out.println("File read error, make sure that the Command exists and is formatted as a JSON object.");
 			e.printStackTrace();
 		}
     	
