@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 
-import com.github.cliftonlabs.json_simple.JsonArray;
-import com.github.cliftonlabs.json_simple.JsonObject;
-import com.github.cliftonlabs.json_simple.Jsoner;
+import com.github.cliftonlabs.json_simple.*;
 
 public class PortWatcher {
 
@@ -15,9 +13,8 @@ public class PortWatcher {
     private PortObserver observer;
     private int currentOrder;
     
-    public PortWatcher(int port, PortObserver observer) {
+    public PortWatcher(int port) {
         this.port = port;
-        this.observer = observer;
         scanner = new Scanner(System.in);
         currentOrder = 0;
     }
@@ -74,6 +71,10 @@ public class PortWatcher {
     	
     	
     	return new Order(orderId, address, zipcode, drink, options);
+    }
+    
+    public void subscribe(PortObserver observer) {
+        this.observer = observer;
     }
     
 }

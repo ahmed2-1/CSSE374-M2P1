@@ -3,7 +3,8 @@ public class Main {
 	//Test Comment
 
     public static void main(String args[]) {
-        API api = new API();
+        PortWatcher watcher = new PortWatcher(800);
+        API api = new API(watcher);
     }
     
 }

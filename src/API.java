@@ -12,7 +12,7 @@ public class API implements PortObserver {
     OrderProcessor orderProcessor;
     PortWatcher portWatcher;
     
-    public API() {
+    public API(PortWatcher portWatcher) {
         
         ControllerDatabase controllerDatabase = new ControllerDatabase("src/db/controllers.txt");
         
@@ -20,8 +20,9 @@ public class API implements PortObserver {
         controllerProcessor = new ControllerProcessor(controllerDatabase);
         responseProcessor =  new ResponseProcessor();
         
-        portWatcher = new PortWatcher(800, this);
-        portWatcher.listen();
+        this.portWatcher = portWatcher;
+        portWatcher.subscribe(this);
+        this.portWatcher.listen();
         
     }
 
