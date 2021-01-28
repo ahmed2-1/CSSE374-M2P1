@@ -15,7 +15,6 @@ public class ControllerDatabase {
     }
     
     private void populateControllers(String connectionString) {
-        // TODO Auto-generated method stub
         
         BufferedReader fr;
         try {
@@ -44,7 +43,6 @@ public class ControllerDatabase {
             
             fr.close();
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         
@@ -53,8 +51,15 @@ public class ControllerDatabase {
     }
 
     public int findCompatibleController(String address, int zip, List<Option> condiments) {
-        //TODO
-        return 1;
+        for(Controller c : controllers) {
+            if(c.getAddress().equals(address + zip)) {
+                if(c.canProcessCondiments(condiments)) {
+                    return c.getId();
+                }
+            }
+        }
+        
+        return -1;
     }
     
     public List<Controller> getAllControllers() {

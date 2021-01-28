@@ -1,6 +1,5 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.util.List;
 import java.util.concurrent.TimeoutException;
 
 import com.github.cliftonlabs.json_simple.JsonObject;
@@ -15,6 +14,14 @@ public abstract class Controller {
     public Controller(int id, String address) {
         this.id = id;
         this.address = address;
+    }
+    
+    public String getAddress() {
+        return address;
+    }
+    
+    public int getId() {
+        return id;
     }
     
     public DrinkResponse trySendCommand(Command command) {
@@ -51,6 +58,8 @@ public abstract class Controller {
     }
     
 	abstract DrinkResponse recieveCommand(Command command) throws TimeoutException;
+	
+	abstract boolean canProcessCondiments(List<Option> condiments);
 	
 	
 }
