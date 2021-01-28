@@ -52,16 +52,17 @@ class APIOutput_Tests {
     
 
     void testWithInputs(String orderInPath, String expectedControllerCommandPath, String expectedUserResponsePath, String databasePath) {
+     
+        String orderIn = readFile(orderInPath);
+        String controllerResponse = readFile(databasePath); //specified by path, unused
+        String expectedControllerCommand = readFile(expectedControllerCommandPath);
+        String expectedUserResponse = readFile(expectedUserResponsePath);
         
         ControllerDatabase database = new ControllerDatabase(databasePath);
         PortWatcher watcher = new PortWatcher(800);
         API api = new API(watcher, database);
         
         watcher.processInput(orderInPath);
-        
-        String orderIn = readFile(orderInPath);
-        String expectedControllerCommand = readFile(expectedControllerCommandPath);
-        String expectedUserResponse = readFile(expectedUserResponsePath);
         
         assertEquals(expectedControllerCommand, readControllerCommandOutput(), "Expected command sent to controller differs from actual");
         assertEquals(expectedUserResponse, readUserResponseOutput(), "Expected response sent to user differs from actual");
@@ -79,5 +80,16 @@ class APIOutput_Tests {
         //TODO: make not refer to itself
         testWithInputs("src/jsons/order2.json", controllerCommandPath, userResponsePath, "src/data/controllers.txt");
     }
+    
+    @Test 
+    void testSimpleMachineJam() {
+    	testWithInputs("src/jsons/order3.json", controllerCommandPath, userResponsePath, "src/data/controllers.txt");
+    }
+    
+    @Test
+    void testAdvancedMachineJam() {
+    	testWithInputs("src/jsons/order4.json", controllerCommandPath, userResponsePath, "src/data/controllers.txt");
+    }
+
 
 }
