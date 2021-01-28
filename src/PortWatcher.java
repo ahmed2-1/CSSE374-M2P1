@@ -1,8 +1,10 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 
+import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonObject;
 import com.github.cliftonlabs.json_simple.Jsoner;
 
@@ -58,8 +60,18 @@ public class PortWatcher {
     	
     	String drink = details.getString(OrderKey.DRINK);
     	
+    	JsonArray condiments = (JsonArray) details.getCollection(OrderKey.CONDIMENTS);
+    	ArrayList<Option> options = new ArrayList<>();
     	
-    	return new Order(orderId, address, zipcode, drink);
+    	for (Object o : condiments) {
+    		JsonObject cond = (JsonObject) o;
+    		String name = cond.getString(OrderKey.NAME);
+    		int qty = cond.getInteger(OrderKey.QUANTITY);
+    		options.add(new Option(name, qty));
+    	}
+    	
+    	
+    	return new Order(orderId, address, zipcode, drink, options);
     }
     
 }
