@@ -43,19 +43,6 @@ public class SimpleController extends Controller {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-	    String str = json.toString();
-        BufferedWriter writer;
-		try {
-			writer = new BufferedWriter(new FileWriter("DrinkResponseJson"));
-			writer.write(str);
-			writer.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	    //F
-	    
 		return response;
 	}
 
