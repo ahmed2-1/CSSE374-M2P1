@@ -19,7 +19,6 @@ public abstract class Controller {
     	
         //DrinkResponse result;
         try {
-        	
             response = recieveCommand(command);
             //result.put("orderID", response.orderID);
             //result.put("status", response.status);
@@ -35,13 +34,7 @@ public abstract class Controller {
         	//result.put("errorcode", response.errorCode);
         }
         
-       
-        
-        
-       
-        
         return response;
-        
     }
     
 	abstract DrinkResponse recieveCommand(Command command) throws TimeoutException;

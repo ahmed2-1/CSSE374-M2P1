@@ -1,3 +1,6 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
 import com.github.cliftonlabs.json_simple.JsonObject;
@@ -23,6 +26,18 @@ public class SimpleController extends Controller {
 	    json.put("DrinkName", command.drinkName);
 	    json.put("Requesttype", command.requestType);
 		
+	    String str = json.toString();
+        BufferedWriter writer;
+		try {
+			writer = new BufferedWriter(new FileWriter("DrinkResponseJson"));
+			writer.write(str);
+			writer.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    
+	    
 		return response;
 		
 	}
