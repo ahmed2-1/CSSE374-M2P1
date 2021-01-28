@@ -1,6 +1,9 @@
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import java.util.List;
 import java.util.concurrent.TimeoutException;
 
 import com.github.cliftonlabs.json_simple.JsonObject;
@@ -41,4 +44,9 @@ public class SimpleController extends Controller {
 		return response;
 		
 	}
+
+    @Override
+    boolean canProcessCondiments(List<Option> condiments) {
+        return condiments.isEmpty();
+    }
 }

@@ -1,6 +1,7 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
 import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonObject;
@@ -46,4 +47,9 @@ public class AdvancedController extends Controller {
 		return response;
 		
 	}
+
+    @Override
+    boolean canProcessCondiments(List<Option> condiments) {
+        return true;
+    }
 }

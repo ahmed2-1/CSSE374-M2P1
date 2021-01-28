@@ -9,13 +9,11 @@ public class ControllerDatabase {
     List<Controller> controllers;
     
     public ControllerDatabase(String connectionString) {
-        
+        controllers = new ArrayList<Controller>();
         populateControllers(connectionString);
-
     }
     
     private void populateControllers(String connectionString) {
-        // TODO Auto-generated method stub
         
         BufferedReader fr;
         try {
@@ -28,7 +26,7 @@ public class ControllerDatabase {
                 
                 String[] details = line.split(";");
                 String type = details[0];
-                String address = details[0];
+                String address = details[1];
                 
                 if(type.equals("SIMPLE")) {
                     controllers.add(new SimpleController(currentId, address));
@@ -44,7 +42,6 @@ public class ControllerDatabase {
             
             fr.close();
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         
@@ -53,12 +50,24 @@ public class ControllerDatabase {
     }
 
     public int findCompatibleController(String address, int zip, List<Option> condiments) {
-        //TODO
-        return 1;
+        
+        for(Controller c : controllers) {
+            if(c.getAddress().equals(address + " " + zip)) {
+                if(c.canProcessCondiments(condiments)) {
+                    return c.getId();
+                }
+            }
+        }
+        
+        return -1;
     }
     
     public List<Controller> getAllControllers() {
         return controllers;
+    }
+
+    public Controller getControllerById(int controllerID) {
+        return controllers.get(controllerID-1);
     }
     
 }
