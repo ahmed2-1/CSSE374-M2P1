@@ -1,9 +1,4 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.concurrent.TimeoutException;
-
-import com.github.cliftonlabs.json_simple.JsonObject;
 
 public abstract class Controller {
 	
@@ -19,7 +14,6 @@ public abstract class Controller {
     
     public DrinkResponse trySendCommand(Command command) {
         
-    	JsonObject commandJson = new JsonObject();
     	DrinkResponse response = null;
     	
     	

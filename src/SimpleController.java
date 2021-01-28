@@ -3,11 +3,9 @@ import java.util.concurrent.TimeoutException;
 import com.github.cliftonlabs.json_simple.JsonObject;
 
 public class SimpleController extends Controller {
-	private int counter;
 	
 	public SimpleController(int id, String address) {
 	    super(id, address);
-		counter = 0;
 	}
 	
 	public DrinkResponse recieveCommand(Command command) throws TimeoutException {
@@ -25,7 +23,6 @@ public class SimpleController extends Controller {
 	    json.put("DrinkName", command.drinkName);
 	    json.put("Requesttype", command.requestType);
 		
-		counter++;
 		return response;
 		
 	}
