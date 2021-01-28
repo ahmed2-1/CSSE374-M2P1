@@ -1,10 +1,16 @@
 
 public class OrderProcessor {
 	
-	public OrderProcessor() {
+    private ControllerDatabase database;
+    
+	public OrderProcessor(ControllerDatabase database) {
+	    
+	    this.database = database;
+	    
 	}
 	
 	public Command processOrder(Order order) {
-		return new Command(1, 1, order.getOrderID(), order.getDrink(), "Simple");
+	    int controllerID = database.findCompatibleController(order.getStreetAddress(),  order.getZipcode(), order.getCondiments());
+		return new Command(controllerID, 1, order.getOrderID(), order.getDrink(), "Simple");
 	}
 }

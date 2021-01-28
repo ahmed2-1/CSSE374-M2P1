@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class ControllerDatabase {
     
-    public int findCompatibleController(String address, List<String> condiments) {
+    public int findCompatibleController(String address, int zip, List<Option> condiments) {
         //TODO
         return 1;
     }

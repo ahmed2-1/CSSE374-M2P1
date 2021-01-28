@@ -9,8 +9,10 @@ public class API implements PortObserver {
     
     public API() {
         
-        orderProcessor = new OrderProcessor();
-        controllerProcessor = new ControllerProcessor();
+        ControllerDatabase controllerDatabase = new ControllerDatabase();
+        
+        orderProcessor = new OrderProcessor(controllerDatabase);
+        controllerProcessor = new ControllerProcessor(controllerDatabase);
         responseProcessor =  new ResponseProcessor();
         
         portWatcher = new PortWatcher(800, this);

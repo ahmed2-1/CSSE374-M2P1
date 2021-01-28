@@ -19,15 +19,14 @@ public abstract class Controller {
         try {
         	
             response = recieveCommand(command);
+            result.put("orderID", response.orderID);
+            result.put("status", response.status);
+            
         } catch (TimeoutException e) {
         	result = new JsonObject();
         	result.put("orderID", (Integer)command.orderID);
 			result.put("status", 0);
         }
-        
-        
-        result.put("orderID", response.orderID);
-        result.put("status", response.status);
         
         if (response.errorCode != 0) {
         	result.put("errordesc", response.errorDesc);
