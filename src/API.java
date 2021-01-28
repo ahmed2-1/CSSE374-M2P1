@@ -1,6 +1,4 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.NoSuchElementException;
 
 import com.github.cliftonlabs.json_simple.JsonObject;
@@ -10,7 +8,6 @@ public class API implements PortObserver {
     ControllerProcessor controllerProcessor;
     ResponseProcessor responseProcessor;
     OrderProcessor orderProcessor;
-    PortWatcher portWatcher;
     
     public API(PortWatcher portWatcher) {
         
@@ -19,10 +16,7 @@ public class API implements PortObserver {
         orderProcessor = new OrderProcessor(controllerDatabase);
         controllerProcessor = new ControllerProcessor(controllerDatabase);
         responseProcessor =  new ResponseProcessor();
-        
-        this.portWatcher = portWatcher;
         portWatcher.subscribe(this);
-        this.portWatcher.listen();
         
     }
 

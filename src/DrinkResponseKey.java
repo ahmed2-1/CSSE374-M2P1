@@ -21,7 +21,7 @@ public enum DrinkResponseKey implements JsonKey {
 
     @Override
     public Object getValue() {
-        return key;
+        return null;
     }
     
 }

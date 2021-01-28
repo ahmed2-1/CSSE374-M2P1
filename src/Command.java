@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.ArrayList;
 
 public class Command {
@@ -6,7 +7,7 @@ public class Command {
 	int orderID;
 	String drinkName;
 	String requestType;
-	ArrayList<Option> options;
+	List<Option> options;
 	
 	public Command(int controllerID, int coffeeID, int orderID, String drinkName, String requestType) {
 		this.controllerID = controllerID;
@@ -14,10 +15,10 @@ public class Command {
 		this.orderID = orderID;
 		this.drinkName = drinkName;
 		this.requestType = requestType;
-		this.options = new ArrayList<>();
+		this.options = new ArrayList<Option>();
 	}
 	
-	public Command(int controllerID, int coffeeID, int orderID, String drinkName, String requestType, ArrayList<Option> options) {
+	public Command(int controllerID, int coffeeID, int orderID, String drinkName, String requestType, List<Option> options) {
 		this.controllerID = controllerID;
 		this.coffeeID = coffeeID;
 		this.orderID = orderID;

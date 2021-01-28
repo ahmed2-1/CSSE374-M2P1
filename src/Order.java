@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.ArrayList;
 
 public class Order {
@@ -5,17 +6,17 @@ public class Order {
 	String streetAddress;
 	int zipcode;
 	String drink;
-	ArrayList<Option> condiments;
+	List<Option> condiments;
 	
 	public Order(int orderID, String streetAddress, int zipcode, String drink) {
 		this.orderID = orderID;
 		this.streetAddress = streetAddress;
 		this.zipcode = zipcode;
 		this.drink = drink;
-		this.condiments = new ArrayList<>();
+		this.condiments = new ArrayList<Option>();
 	}
 	
-	public Order(int orderID, String streetAddress, int zipcode, String drink, ArrayList<Option> condiments) {
+	public Order(int orderID, String streetAddress, int zipcode, String drink, List<Option> condiments) {
 		this.orderID = orderID;
 		this.streetAddress = streetAddress;
 		this.zipcode = zipcode;
@@ -39,7 +40,7 @@ public class Order {
 		return this.drink;
 	}
 	
-	public ArrayList<Option> getCondiments(){
+	public List<Option> getCondiments(){
 		return this.condiments;
 	}
  

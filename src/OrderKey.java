@@ -25,7 +25,7 @@ public enum OrderKey implements JsonKey {
 
     @Override
     public Object getValue() {
-        return key;
+        return null;
     }
 
 }
