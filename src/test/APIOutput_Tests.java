@@ -63,6 +63,7 @@ class APIOutput_Tests {
         API api = new API(watcher, database);
         
         //TODO: run the api for given files
+        watcher.processInput(orderInPath);
         
         assertEquals(expectedControllerCommand, readControllerCommandOutput(), "Expected command sent to controller differs from actual");
         assertEquals(expectedUserResponse, readUserResponseOutput(), "Expected response sent to user differs from actual");

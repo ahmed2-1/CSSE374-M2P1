@@ -19,19 +19,20 @@ public class PortWatcher {
     public PortWatcher(int port) {
         this.port = port;
         scanner = new Scanner(System.in);
-        currentOrder = 0;
+        currentOrder = 1;
     }
     
     public void listen() {
-        while(processInput());
+        while(processInput(String.format("src/jsons/order%d.json", currentOrder))) {
+            currentOrder++;
+        }
         scanner.close();
     }
     
-    private boolean processInput() {
-    	currentOrder++;
+    public boolean processInput(String filepath) {
     	JsonObject input = new JsonObject();
     	try {
-			FileReader fr = new FileReader(String.format("src/jsons/order%d.json", currentOrder));
+			FileReader fr = new FileReader(filepath);
 			input = (JsonObject) Jsoner.deserialize(fr);
 			fr.close();
 		} catch (Exception e) {
