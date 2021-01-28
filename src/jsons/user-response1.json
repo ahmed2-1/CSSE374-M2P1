@@ -1,0 +1,8 @@
+{
+  "user-response": {
+    "orderID": 1,
+    "coffee_machine_id": 1,
+    "status": 0,
+    "status-message": "Your coffee has been prepared with your desired options."
+  }
+}

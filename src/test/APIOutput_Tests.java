@@ -50,8 +50,7 @@ class APIOutput_Tests {
         JsonObject expectedControllerCommand = readFile(expectedControllerCommandPath);
         JsonObject expectedUserResponse = readFile(expectedUserResponsePath);
         
-        
-        assertEquals(expectedControllerCommand, readControllerCommandOutput(), "Expected command sent to controller differs from actual");
+        assertEquals(expectedControllerCommand, readControllerCommandOutput()), "Expected command sent to controller differs from actual");
         assertEquals(expectedUserResponse, readUserResponseOutput(), "Expected response sent to user differs from actual");
         
     }
@@ -59,7 +58,7 @@ class APIOutput_Tests {
     @Test
     void testAdvancedSuccess() {
         //TODO: make not refer to itself
-        testWithInputs("src/jsons/order1.json", controllerCommandPath, userResponsePath, "src/data/test-controllers1.txt");
+        testWithInputs("src/jsons/order1.json", "src/jsons/command1.json", "src/jsons/user-response1.json", "src/data/test-controllers1.txt");
     }
     
     @Test

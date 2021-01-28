@@ -1,1 +1,9 @@
-{"command":{"Options":[],"controller_id":1,"orderID":2,"coffee_machine_id":1,"DrinkName":"Expresso","Requesttype":"Simple"}}
+{
+  "command": {
+    "controller_id": 1,
+    "coffee_machine_id": 2,
+    "orderID": 2,
+    "DrinkName": "Expresso",
+    "Requesttype": "Simple"
+  }
+}
