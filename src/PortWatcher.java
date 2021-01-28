@@ -22,6 +22,7 @@ public class PortWatcher {
     
     public void listen() {
         while(processInput());
+        scanner.close();
     }
     
     private boolean processInput() {
@@ -30,6 +31,7 @@ public class PortWatcher {
     	try {
 			FileReader fr = new FileReader("src/jsons/order1.json");
 			input = (JsonObject) Jsoner.deserialize(fr);
+			fr.close();
 		} catch (Exception e) {
 			System.out.println("Ya done goofed");
 			e.printStackTrace();
