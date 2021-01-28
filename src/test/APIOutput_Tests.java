@@ -4,6 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.*;
 import org.junit.jupiter.api.Test;
 
+import data.ControllerDatabase;
+import domain.API;
+import presentation.PortWatcher;
+
 class APIOutput_Tests {
 
     private final String controllerCommandPath = "src/jsons/controller-command-output.json";
@@ -54,9 +58,11 @@ class APIOutput_Tests {
         String expectedControllerCommand = readFile(expectedControllerCommandPath);
         String expectedUserResponse = readFile(expectedUserResponsePath);
         
-        //TODO: run actual api stuff
+        ControllerDatabase database = new ControllerDatabase("src/data/controllers.txt");
         PortWatcher watcher = new PortWatcher(800);
-        API api = new API(watcher);
+        API api = new API(watcher, database);
+        
+        //TODO: run the api for given files
         
         assertEquals(expectedControllerCommand, readControllerCommandOutput(), "Expected command sent to controller differs from actual");
         assertEquals(expectedUserResponse, readUserResponseOutput(), "Expected response sent to user differs from actual");
