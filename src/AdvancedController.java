@@ -7,29 +7,13 @@ import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonObject;
 
 public class AdvancedController extends Controller {
-	private int counter;
 	
 	public AdvancedController(int id, String address) {
 	    super(id, address);
-		counter = 0;
 	}
 	
 	public DrinkResponse recieveCommand(Command command) {
-		/*
-		boolean fail = false;
-		if (counter % 5 == 0) {
-			fail = true;
-		}
-		
-		
-		DrinkResponse response;
-		if (fail) {
-			response = new DrinkResponse(command.orderID, 0, 20, "Machine Jammed");
-		} else {
-			response = new DrinkResponse(command.orderID, 0);
-		}
-		*/
-		
+	
 		JsonObject json = new JsonObject();
 		
 		json.put("controller_id", command.controllerID);

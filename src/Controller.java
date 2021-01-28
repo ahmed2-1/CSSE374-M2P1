@@ -1,8 +1,8 @@
+
 import java.io.*;
 import java.util.List;
-import java.util.concurrent.TimeoutException;
 
-import com.github.cliftonlabs.json_simple.JsonObject;
+import java.util.concurrent.TimeoutException;
 
 public abstract class Controller {
 	
@@ -29,7 +29,6 @@ public abstract class Controller {
     	DrinkResponse response = null;
 
         try {
-        	
             response = recieveCommand(command);
 
             
@@ -37,8 +36,8 @@ public abstract class Controller {
             //make timeout error and put in response
         }
         
+
         return response;
-        
     }
     
 	abstract DrinkResponse recieveCommand(Command command) throws TimeoutException;

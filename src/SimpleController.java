@@ -8,11 +8,9 @@ import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonObject;
 
 public class SimpleController extends Controller {
-	private int counter;
 	
 	public SimpleController(int id, String address) {
 	    super(id, address);
-		counter = 0;
 	}
 	
 	public DrinkResponse recieveCommand(Command command) throws TimeoutException {
@@ -46,7 +44,18 @@ public class SimpleController extends Controller {
 			e.printStackTrace();
 		}
 		
-		counter++;
+	    String str = json.toString();
+        BufferedWriter writer;
+		try {
+			writer = new BufferedWriter(new FileWriter("DrinkResponseJson"));
+			writer.write(str);
+			writer.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    //F
+	    
 		return response;
 	}
 
