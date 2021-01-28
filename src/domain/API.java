@@ -47,13 +47,15 @@ public class API implements PortObserver {
     private void sendUserResponse(UserResponse userResponse) {
         
         JsonObject json = new JsonObject();
+        JsonObject inner = new JsonObject();
         
-        json.put("orderID", userResponse.orderID);
-        json.put("coffee_machine_id", userResponse.coffeeID);
-        json.put("status", userResponse.status);
-        json.put("status-message", userResponse.statusMessage);
+        json.put("user-response", inner);
+        inner.put("orderID", userResponse.orderID);
+        inner.put("coffee_machine_id", userResponse.coffeeID);
+        inner.put("status", userResponse.status);
+        inner.put("status-message", userResponse.statusMessage);
         if(userResponse.status != 0) {
-            json.put("error-message", userResponse.errorMessage);
+            inner.put("error-message", userResponse.errorMessage);
         }
         
         BufferedWriter writer;
