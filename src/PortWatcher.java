@@ -35,12 +35,11 @@ public class PortWatcher {
 			input = (JsonObject) Jsoner.deserialize(fr);
 			fr.close();
 		} catch (Exception e) {
-			System.out.println("Ya done goofed");
+			System.out.println("File read error, make sure that the order exists and is formatted as a JSON object.");
 			e.printStackTrace();
 			return false;
 		}
     	
-    	System.out.println(input.toString());
     	Order order = convertFromJson(input);
     	observer.recieveOrder(order);
     	System.out.println();
