@@ -9,7 +9,7 @@ public class API implements PortObserver {
     
     public API() {
         
-        ControllerDatabase controllerDatabase = new ControllerDatabase();
+        ControllerDatabase controllerDatabase = new ControllerDatabase("src/db/controllers.txt");
         
         orderProcessor = new OrderProcessor(controllerDatabase);
         controllerProcessor = new ControllerProcessor(controllerDatabase);

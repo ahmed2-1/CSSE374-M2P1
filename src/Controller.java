@@ -9,6 +9,14 @@ public abstract class Controller {
 	
     private final int timeoutSeconds = 30;
     
+    private int id;
+    private String address;
+    
+    public Controller(int id, String address) {
+        this.id = id;
+        this.address = address;
+    }
+    
     public DrinkResponse trySendCommand(Command command) {
         
     	JsonObject commandJson = new JsonObject();

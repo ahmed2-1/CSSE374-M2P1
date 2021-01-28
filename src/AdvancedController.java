@@ -5,12 +5,11 @@ import java.io.IOException;
 import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonObject;
 
-import jdk.nashorn.internal.runtime.options.Options;
-
 public class AdvancedController extends Controller {
 	private int counter;
 	
-	AdvancedController() {
+	public AdvancedController(int id, String address) {
+	    super(id, address);
 		counter = 0;
 	}
 	

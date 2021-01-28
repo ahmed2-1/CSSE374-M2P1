@@ -5,7 +5,8 @@ import com.github.cliftonlabs.json_simple.JsonObject;
 public class SimpleController extends Controller {
 	private int counter;
 	
-	SimpleController() {
+	public SimpleController(int id, String address) {
+	    super(id, address);
 		counter = 0;
 	}
 	
