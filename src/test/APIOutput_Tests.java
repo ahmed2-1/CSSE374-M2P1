@@ -51,18 +51,17 @@ class APIOutput_Tests {
     }
     
 
-    void testWithInputs(String orderInPath, String expectedControllerCommandPath, String controllerResponsePath, String expectedUserResponsePath) {
+    void testWithInputs(String orderInPath, String expectedControllerCommandPath, String expectedUserResponsePath, String databasePath) {
      
         String orderIn = readFile(orderInPath);
-        String controllerResponse = readFile(controllerResponsePath);
+        String controllerResponse = readFile(databasePath); //specified by path, unused
         String expectedControllerCommand = readFile(expectedControllerCommandPath);
         String expectedUserResponse = readFile(expectedUserResponsePath);
         
-        ControllerDatabase database = new ControllerDatabase("src/data/controllers.txt");
+        ControllerDatabase database = new ControllerDatabase(databasePath);
         PortWatcher watcher = new PortWatcher(800);
         API api = new API(watcher, database);
         
-        //TODO: run the api for given files
         watcher.processInput(orderInPath);
         
         assertEquals(expectedControllerCommand, readControllerCommandOutput(), "Expected command sent to controller differs from actual");
@@ -71,9 +70,15 @@ class APIOutput_Tests {
     }
     
     @Test
-    void testExample() {
-        //always passes, compares output to itself
-        testWithInputs("src/jsons/order1.json", controllerCommandPath, "src/jsons/controller-response1.json", userResponsePath);
+    void testAdvancedSuccess() {
+        //TODO: make not refer to itself
+        testWithInputs("src/jsons/order1.json", controllerCommandPath, userResponsePath, "src/data/controllers.txt");
+    }
+    
+    @Test
+    void testSimpleSuccess() {
+        //TODO: make not refer to itself
+        testWithInputs("src/jsons/order2.json", controllerCommandPath, userResponsePath, "src/data/controllers.txt");
     }
 
 }

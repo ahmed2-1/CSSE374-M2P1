@@ -23,31 +23,36 @@ public class PortWatcher {
     }
     
     public void listen() {
-        while(processInput(String.format("src/jsons/order%d.json", currentOrder))) {
+        
+        boolean flag = true;
+        
+        while(flag) {
+            
+            processInput(String.format("src/jsons/order%d.json", currentOrder));
             currentOrder++;
+            
+            System.out.println("Order Recieved");
+            System.out.println("Continue? (y/n)");
+            String cont = scanner.nextLine();
+            System.out.println();
+            flag = cont.equals("y");
         }
         scanner.close();
     }
     
-    public boolean processInput(String filepath) {
+    public void processInput(String filepath) {
     	JsonObject input = new JsonObject();
     	try {
 			FileReader fr = new FileReader(filepath);
 			input = (JsonObject) Jsoner.deserialize(fr);
 			fr.close();
+			
+			Order order = convertFromJson(input);
+	        observer.recieveOrder(order);
 		} catch (Exception e) {
 			System.out.println("File read error, make sure that the order exists and is formatted as a JSON object.");
 			e.printStackTrace();
-			return false;
 		}
-    	
-    	Order order = convertFromJson(input);
-    	observer.recieveOrder(order);
-    	System.out.println("Order Recieved");
-    	System.out.println("Continue? (y/n)");
-    	String cont = scanner.nextLine();
-    	System.out.println();
-    	return cont.equals("y");
     	
     }
     
