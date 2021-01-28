@@ -47,14 +47,14 @@ public class PortWatcher {
     }
     
     private Order convertFromJson(JsonObject obj) {
-    	JsonObject details = (JsonObject) obj.getMap(CoffeeOrderKey.ORDER);
-    	Integer orderId = details.getInteger(CoffeeOrderKey.ORDERID);
+    	JsonObject details = (JsonObject) obj.getMap(OrderKey.ORDER);
+    	Integer orderId = details.getInteger(OrderKey.ORDERID);
     	
-    	JsonObject addressObj = (JsonObject) details.getMap(CoffeeOrderKey.ADDRESS);
-    	String address = addressObj.getString(CoffeeOrderKey.STREET);
-    	Integer zipcode = addressObj.getInteger(CoffeeOrderKey.ZIP);
+    	JsonObject addressObj = (JsonObject) details.getMap(OrderKey.ADDRESS);
+    	String address = addressObj.getString(OrderKey.STREET);
+    	Integer zipcode = addressObj.getInteger(OrderKey.ZIP);
     	
-    	String drink = details.getString(CoffeeOrderKey.DRINK);
+    	String drink = details.getString(OrderKey.DRINK);
     	
     	
     	return new Order(orderId, address, zipcode, drink);

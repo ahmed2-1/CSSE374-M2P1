@@ -25,10 +25,7 @@ public class API implements PortObserver {
         Command command = orderProcessor.processOrder(order);
         Controller target = controllerProcessor.getAssignedController(command);
         
-        
         DrinkResponse machineResponse = target.trySendCommand(command);
-        
-        //DrinkResponse machineResponse = target.trySendCommand(command);
         userResponse = responseProcessor.processResponse(machineResponse, command.coffeeID);
         
         sendUserResponse(userResponse);
