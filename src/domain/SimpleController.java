@@ -34,7 +34,10 @@ public class SimpleController extends Controller {
 	    }
 	    json.put("Options", ar);
 	    
-	    String str = json.toString();
+	    JsonObject cj = new JsonObject();
+	    cj.put("command", json);
+	    
+	    String str = cj.toString();
         BufferedWriter writer;
 		try {
 			writer = new BufferedWriter(new FileWriter("src/jsons/controller-command-output.json"));
