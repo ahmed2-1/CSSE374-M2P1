@@ -1,5 +1,7 @@
 import java.util.concurrent.TimeoutException;
 
+import com.github.cliftonlabs.json_simple.JsonObject;
+
 public class SimpleController extends Controller {
 	private int counter;
 	
@@ -11,18 +13,16 @@ public class SimpleController extends Controller {
 		
 	    
 		DrinkResponse response;
-		//JsonObject json = new JsonObject();
-		
-		if (counter % 3 == 1) {
-			response = new DrinkResponse(command.orderID, 1, 20, "Machine Jammed");
-		}
-		else if (counter % 3 == 2) {
-		    throw new TimeoutException();
-		}
-		else {
-			response = new DrinkResponse(command.orderID, 0);
+		response = new DrinkResponse(command.orderID, 0);
 			
-		}
+	
+		JsonObject json = new JsonObject();
+		
+		json.put("controller_id", command.controllerID);
+	    json.put("coffee_machine_id", command.coffeeID);
+	    json.put("orderID", command.orderID);
+	    json.put("DrinkName", command.drinkName);
+	    json.put("Requesttype", command.requestType);
 		
 		counter++;
 		return response;

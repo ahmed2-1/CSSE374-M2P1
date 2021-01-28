@@ -11,7 +11,7 @@ public abstract class Controller {
     
     public DrinkResponse trySendCommand(Command command) {
         
-    	JsonObject result = new JsonObject();
+    	JsonObject commandJson = new JsonObject();
     	DrinkResponse response = null;
     	
     	
@@ -19,30 +19,21 @@ public abstract class Controller {
         try {
         	
             response = recieveCommand(command);
-            result.put("orderID", response.orderID);
-            result.put("status", response.status);
+            //result.put("orderID", response.orderID);
+            //result.put("status", response.status);
             
         } catch (TimeoutException e) {
-        	result = new JsonObject();
-        	result.put("orderID", (Integer)command.orderID);
-			result.put("status", 0);
+        	//result = new JsonObject();
+        	//result.put("orderID", (Integer)command.orderID);
+			//result.put("status", 0);
         }
         
         if (response.errorCode != 0) {
-        	result.put("errordesc", response.errorDesc);
-        	result.put("errorcode", response.errorCode);
+        	//result.put("errordesc", response.errorDesc);
+        	//result.put("errorcode", response.errorCode);
         }
         
-        String str = result.toString();
-        BufferedWriter writer;
-		try {
-			writer = new BufferedWriter(new FileWriter("DrinkResponseJson"));
-			writer.write(str);
-			writer.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+       
         
         
        
