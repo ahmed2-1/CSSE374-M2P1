@@ -1,9 +1,6 @@
 import java.io.*;
 import java.util.*;
 
-import com.github.cliftonlabs.json_simple.JsonObject;
-import com.github.cliftonlabs.json_simple.Jsoner;
-
 public class ControllerDatabase {
     
     List<Controller> controllers;
@@ -59,7 +56,7 @@ public class ControllerDatabase {
             }
         }
         
-        return -1;
+        throw new NoSuchElementException("No compatible controller");
     }
     
     public List<Controller> getAllControllers() {
