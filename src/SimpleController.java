@@ -1,4 +1,5 @@
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
@@ -6,6 +7,7 @@ import java.util.concurrent.TimeoutException;
 
 import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonObject;
+import com.github.cliftonlabs.json_simple.Jsoner;
 
 public class SimpleController extends Controller {
 	
@@ -14,9 +16,6 @@ public class SimpleController extends Controller {
 	}
 	
 	public DrinkResponse recieveCommand(Command command) throws TimeoutException {
-		DrinkResponse response;
-		response = new DrinkResponse(command.orderID, 0);
-			
 		JsonObject json = new JsonObject();
 		
 		json.put("controller_id", command.controllerID);
@@ -43,10 +42,22 @@ public class SimpleController extends Controller {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+    	JsonObject input = new JsonObject();
+    	try {
+			FileReader fr = new FileReader("src/jsons/controller-response1.json");
+			input = (JsonObject) Jsoner.deserialize(fr);
+			fr.close();
+		} catch (Exception e) {
+			System.out.println("File read error, make sure that the order exists and is formatted as a JSON object.");
+			e.printStackTrace();
+		}
+    	
+    	DrinkResponse response = convertFromJson(input);
 		return response;
 	}
 
-    @Override
+	@Override
     boolean canProcessCondiments(List<Option> condiments) {
         return condiments.isEmpty();
     }
