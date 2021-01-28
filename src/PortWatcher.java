@@ -63,11 +63,13 @@ public class PortWatcher {
     	JsonArray condiments = (JsonArray) details.getCollection(OrderKey.CONDIMENTS);
     	ArrayList<Option> options = new ArrayList<>();
     	
-    	for (Object o : condiments) {
-    		JsonObject cond = (JsonObject) o;
-    		String name = cond.getString(OrderKey.NAME);
-    		int qty = cond.getInteger(OrderKey.QUANTITY);
-    		options.add(new Option(name, qty));
+    	if (condiments != null) {
+	    	for (Object o : condiments) {
+	    		JsonObject cond = (JsonObject) o;
+	    		String name = cond.getString(OrderKey.NAME);
+	    		int qty = cond.getInteger(OrderKey.QUANTITY);
+	    		options.add(new Option(name, qty));
+	    	}
     	}
     	
     	
