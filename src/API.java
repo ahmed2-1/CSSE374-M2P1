@@ -1,3 +1,4 @@
+import com.github.cliftonlabs.json_simple.JsonObject;
 
 public class API implements PortObserver {
 
@@ -23,7 +24,11 @@ public class API implements PortObserver {
         UserResponse userResponse;
         Command command = orderProcessor.processOrder(order);
         Controller target = controllerProcessor.getAssignedController(command);
+        
+        
         DrinkResponse machineResponse = target.trySendCommand(command);
+        
+        //DrinkResponse machineResponse = target.trySendCommand(command);
         userResponse = responseProcessor.processResponse(machineResponse, command.coffeeID);
         
         sendUserResponse(userResponse);

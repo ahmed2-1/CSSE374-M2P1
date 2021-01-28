@@ -11,6 +11,8 @@ public class SimpleController extends Controller {
 		
 	    
 		DrinkResponse response;
+		//JsonObject json = new JsonObject();
+		
 		if (counter % 3 == 1) {
 			response = new DrinkResponse(command.orderID, 1, 20, "Machine Jammed");
 		}
@@ -19,9 +21,9 @@ public class SimpleController extends Controller {
 		}
 		else {
 			response = new DrinkResponse(command.orderID, 0);
+			
 		}
 		
-		//DrinkResponse response = new DrinkResponse(command.orderID, 0);
 		counter++;
 		return response;
 		
