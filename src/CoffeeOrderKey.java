@@ -1,10 +1,15 @@
 import com.github.cliftonlabs.json_simple.JsonKey;
 
 public enum CoffeeOrderKey implements JsonKey{
+    ORDER ("order"),
     ORDERID ("orderID"),
     ADDRESS ("address"),
+    STREET ("street"),
+    ZIP ("ZIP"),
     DRINK ("drink"),
-    CONDIMENTS("condiments");
+    CONDIMENTS("condiments"),
+    NAME ("name"),
+    QUANTITY ("qty");
     
     private final String key;
     
