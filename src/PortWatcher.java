@@ -63,7 +63,7 @@ public class PortWatcher {
     	JsonArray condiments = (JsonArray) details.getCollection(OrderKey.CONDIMENTS);
     	ArrayList<Option> options = new ArrayList<>();
     	
-    	if (condiments != null) {
+    	if (condiments != null) { //Need this here to catch is there are no condiments
 	    	for (Object o : condiments) {
 	    		JsonObject cond = (JsonObject) o;
 	    		String name = cond.getString(OrderKey.NAME);
