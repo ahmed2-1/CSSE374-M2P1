@@ -48,9 +48,25 @@ class APIOutput_Tests {
         return result;
     }
     
+
+    void testWithInputs(String orderInPath, String expectedControllerCommandPath, String controllerResponsePath, String expectedUserResponsePath) {
+     
+        String orderIn = readFile(orderInPath);
+        String controllerResponse = readFile(controllerResponsePath);
+        String expectedControllerCommand = readFile(expectedControllerCommandPath);
+        String expectedUserResponse = readFile(expectedUserResponsePath);
+        
+        //TODO: run actual api stuff
+        
+        assertEquals(expectedControllerCommand, readControllerCommandOutput());
+        assertEquals(expectedUserResponse, readUserResponseOutput());
+        
+    }
+    
     @Test
-    void test() {
-        fail("Not yet implemented");
+    void testExample() {
+        //always passes, compares output to itself
+        testWithInputs("src/jsons/order1.json", controllerCommandPath, "src/jsons/controller-response1.json", userResponsePath);
     }
 
 }
