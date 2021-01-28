@@ -55,6 +55,7 @@ public class SimpleController extends Controller {
 		} catch (Exception e) {
 			System.out.println("File read error, make sure that the Command exists and is formatted as a JSON object.");
 			e.printStackTrace();
+			return new DrinkResponse(command.orderID ,1, 5, "File Read Error");
 		}
     	
     	DrinkResponse response = convertFromJson(input);
