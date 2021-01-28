@@ -65,13 +65,13 @@ class APIOutput_Tests {
     @Test
     void testSimpleSuccess() {
         //TODO: make not refer to itself
-        testWithInputs("src/jsons/order2.json", controllerCommandPath, userResponsePath, "src/data/test-controllers1.txt");
+        testWithInputs("src/jsons/order2.json", "src/jsons/command2.json", "src/jsons/user-response2.json", "src/data/test-controllers1.txt");
     }
     
     @Test
     void testAssignmentFailure() {
         //controller command is not sent, does not need to be tested so it is compared to itself
-        testWithInputs("src/jsons/order1.json", controllerCommandPath, "src/jsons/user-response3.json", "src/data/test-controllers2.txt");
+        testWithInputs("src/jsons/order1.json", controllerCommandPath, "src/jsons/user-response5.json", "src/data/test-controllers2.txt");
     }
 
 }
