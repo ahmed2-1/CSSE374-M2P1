@@ -28,7 +28,7 @@ public class API implements PortObserver {
         try {
         	command = orderProcessor.processOrder(order);
         } catch (Exception e) {
-        	System.out.println("No Valid Coffee Machine ");
+        	System.out.println("No Valid Coffee Machine");
         }
         
         Controller target = controllerProcessor.getAssignedController(command);
