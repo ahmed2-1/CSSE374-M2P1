@@ -1,5 +1,7 @@
 package presentation;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 import com.github.cliftonlabs.json_simple.*;
@@ -49,10 +51,16 @@ public class PortWatcher {
 			
 			Order order = convertFromJson(input);
 	        observer.recieveOrder(order);
-		} catch (Exception e) {
+		} catch (FileNotFoundException e) {
 			System.out.println("File read error, make sure that the order exists and is formatted as a JSON object.");
 			e.printStackTrace();
-		}
+		} catch (IOException e) {
+            System.out.println("File read error, make sure that the order exists and is formatted as a JSON object.");
+            e.printStackTrace();
+        } catch (JsonException e) {
+            System.out.println("File read error, make sure that the order exists and is formatted as a JSON object.");
+            e.printStackTrace();
+        }
     	
     }
     

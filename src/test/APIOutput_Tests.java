@@ -81,9 +81,6 @@ class APIOutput_Tests {
         try {
             JsonObject innerExpected = (JsonObject) expected.get("user-response");
             JsonObject innerActual = (JsonObject) actual.get("user-response");
-            
-            System.out.println(expected);
-            System.out.println(actual);
 
             assertEquals(innerExpected.get("orderID"), innerActual.get("orderID"), "Incorrect orderID");
             assertEquals(innerExpected.get("coffee_machine_id"), innerActual.get("coffee_machine_id"), "Incorrect coffee_machine_id");
