@@ -36,7 +36,7 @@ public class SimpleController extends Controller {
 	    String str = json.toString();
         BufferedWriter writer;
 		try {
-			writer = new BufferedWriter(new FileWriter("DrinkResponseJson"));
+			writer = new BufferedWriter(new FileWriter("ControllerCommandJson"));
 			writer.write(str);
 			writer.close();
 		} catch (IOException e) {
