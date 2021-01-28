@@ -40,6 +40,7 @@ class APIOutput_Tests {
 
     //Controller response is located at src/jsons/controller-response%d, where %d is the orderid of the input order
     void testWithInputs(String orderInPath, String expectedControllerCommandPath, String expectedUserResponsePath, String databasePath) {
+    
         
         ControllerDatabase database = new ControllerDatabase(databasePath);
         PortWatcher watcher = new PortWatcher(800);
@@ -47,10 +48,12 @@ class APIOutput_Tests {
         
         watcher.processInput(orderInPath);
         
+
         JsonObject expectedControllerCommand = readFile(expectedControllerCommandPath);
         JsonObject expectedUserResponse = readFile(expectedUserResponsePath);
         
-        assertEquals(expectedControllerCommand, readControllerCommandOutput()), "Expected command sent to controller differs from actual");
+
+        assertEquals(expectedControllerCommand, readControllerCommandOutput(), "Expected command sent to controller differs from actual");
         assertEquals(expectedUserResponse, readUserResponseOutput(), "Expected response sent to user differs from actual");
         
     }
@@ -72,5 +75,16 @@ class APIOutput_Tests {
         //controller command is not sent, does not need to be tested so it is compared to itself
         testWithInputs("src/jsons/order1.json", controllerCommandPath, "src/jsons/user-response5.json", "src/data/test-controllers2.txt");
     }
+    
+    @Test 
+    void testSimpleMachineJam() {
+    	testWithInputs("src/jsons/order3.json", controllerCommandPath, userResponsePath, "src/data/controllers.txt");
+    }
+    
+    @Test
+    void testAdvancedMachineJam() {
+    	testWithInputs("src/jsons/order4.json", controllerCommandPath, userResponsePath, "src/data/controllers.txt");
+    }
+
 
 }
