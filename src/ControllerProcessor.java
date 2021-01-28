@@ -2,10 +2,11 @@ import java.util.*;
 
 public class ControllerProcessor {
 
-    private ArrayList<Controller> controllers;
+    private List<Controller> controllers;
+    private ControllerDatabase database;
     
-    public ControllerProcessor() {
-        controllers = new ArrayList<Controller>();
+    public ControllerProcessor(ControllerDatabase database) {
+        this.database = database;
         populateControllers();
     }
     
@@ -15,7 +16,7 @@ public class ControllerProcessor {
     
     private void populateControllers() {
         
-        controllers.add(new SimpleController());
+        this.controllers = database.getAllControllers();
         
     }
     
