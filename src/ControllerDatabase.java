@@ -58,14 +58,7 @@ public class ControllerDatabase {
     }
     
     public List<Controller> getAllControllers() {
-        
-        List<Controller> allControllers = new ArrayList<Controller>();
-        
-        //TODO: link to file IO
-        allControllers.add(new SimpleController());
-        allControllers.add(new AdvancedController());
-        
-        return allControllers;
+        return controllers;
     }
     
 }
