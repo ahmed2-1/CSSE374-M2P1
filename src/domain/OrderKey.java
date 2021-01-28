@@ -1,16 +1,21 @@
+package domain;
 import com.github.cliftonlabs.json_simple.JsonKey;
 
-public enum DrinkResponseKey implements JsonKey {
-
-    DRINKRESPONSE ("drinkresponse"),
+public enum OrderKey implements JsonKey {
+    
+    ORDER ("order"),
     ORDERID ("orderID"),
-    STATUS ("status"),
-    ERRORDESC ("errordesc"),
-    ERRORCODE ("errorcode");
+    ADDRESS ("address"),
+    STREET ("street"),
+    ZIP ("ZIP"),
+    DRINK ("drink"),
+    CONDIMENTS("condiments"),
+    NAME ("name"),
+    QUANTITY ("qty");
     
     private final String key;
     
-    DrinkResponseKey(String key) {
+    OrderKey(String key) {
         this.key = key;
     }
 
@@ -23,5 +28,5 @@ public enum DrinkResponseKey implements JsonKey {
     public Object getValue() {
         return null;
     }
-    
+
 }

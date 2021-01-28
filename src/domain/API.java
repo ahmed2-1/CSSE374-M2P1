@@ -1,7 +1,11 @@
+package domain;
 import java.io.*;
 import java.util.NoSuchElementException;
 
 import com.github.cliftonlabs.json_simple.JsonObject;
+
+import data.ControllerDatabase;
+import presentation.PortWatcher;
 
 public class API implements PortObserver {
 
@@ -9,9 +13,9 @@ public class API implements PortObserver {
     ResponseProcessor responseProcessor;
     OrderProcessor orderProcessor;
     
-    public API(PortWatcher portWatcher) {
+    public API(PortWatcher portWatcher, ControllerDatabase database) {
         
-        ControllerDatabase controllerDatabase = new ControllerDatabase("src/db/controllers.txt");
+        ControllerDatabase controllerDatabase = database;
         
         orderProcessor = new OrderProcessor(controllerDatabase);
         controllerProcessor = new ControllerProcessor(controllerDatabase);

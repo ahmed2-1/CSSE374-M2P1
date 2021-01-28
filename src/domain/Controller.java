@@ -1,3 +1,4 @@
+package domain;
 
 import java.util.List;
 
@@ -43,7 +44,7 @@ public abstract class Controller {
     
 	abstract DrinkResponse recieveCommand(Command command) throws TimeoutException;
 	
-	abstract boolean canProcessCondiments(List<Option> condiments);
+	public abstract boolean canProcessCondiments(List<Option> condiments);
 	
 	public DrinkResponse convertFromJson(JsonObject input) {
     	DrinkResponse response;

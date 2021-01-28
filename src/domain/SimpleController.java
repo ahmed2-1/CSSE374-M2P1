@@ -1,3 +1,4 @@
+package domain;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -58,7 +59,7 @@ public class SimpleController extends Controller {
 	}
 
 	@Override
-    boolean canProcessCondiments(List<Option> condiments) {
+    public boolean canProcessCondiments(List<Option> condiments) {
         return condiments.isEmpty();
     }
 }

@@ -1,9 +1,7 @@
 package test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.io.*;
-
 import org.junit.jupiter.api.Test;
 
 class APIOutput_Tests {
@@ -57,9 +55,11 @@ class APIOutput_Tests {
         String expectedUserResponse = readFile(expectedUserResponsePath);
         
         //TODO: run actual api stuff
+        PortWatcher watcher = new PortWatcher(800);
+        API api = new API(watcher);
         
-        assertEquals(expectedControllerCommand, readControllerCommandOutput());
-        assertEquals(expectedUserResponse, readUserResponseOutput());
+        assertEquals(expectedControllerCommand, readControllerCommandOutput(), "Expected command sent to controller differs from actual");
+        assertEquals(expectedUserResponse, readUserResponseOutput(), "Expected response sent to user differs from actual");
         
     }
     

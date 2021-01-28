@@ -1,3 +1,6 @@
+package domain;
+import data.ControllerDatabase;
+
 public class OrderProcessor {
 	
     private ControllerDatabase database;
