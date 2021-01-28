@@ -3,6 +3,7 @@ import java.io.*;
 import java.util.NoSuchElementException;
 
 import com.github.cliftonlabs.json_simple.JsonObject;
+import com.github.cliftonlabs.json_simple.Jsoner;
 
 import data.ControllerDatabase;
 import presentation.PortWatcher;
@@ -55,9 +56,9 @@ public class API implements PortObserver {
             json.put("error-message", userResponse.errorMessage);
         }
         
-        String str = json.toString();
         BufferedWriter writer;
         try {
+        	String str = Jsoner.serialize(json);
             writer = new BufferedWriter(new FileWriter("src/jsons/api-user-response-output.json"));
             writer.write(str);
             writer.close();
