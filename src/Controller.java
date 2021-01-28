@@ -26,32 +26,16 @@ public abstract class Controller {
     
     public DrinkResponse trySendCommand(Command command) {
         
-    	JsonObject commandJson = new JsonObject();
     	DrinkResponse response = null;
-    	
-    	
-        //DrinkResponse result;
+
         try {
         	
             response = recieveCommand(command);
-            //result.put("orderID", response.orderID);
-            //result.put("status", response.status);
+
             
         } catch (TimeoutException e) {
-        	//result = new JsonObject();
-        	//result.put("orderID", (Integer)command.orderID);
-			//result.put("status", 0);
+            //make timeout error and put in response
         }
-        
-        if (response.errorCode != 0) {
-        	//result.put("errordesc", response.errorDesc);
-        	//result.put("errorcode", response.errorCode);
-        }
-        
-       
-        
-        
-       
         
         return response;
         
