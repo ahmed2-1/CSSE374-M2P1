@@ -15,4 +15,8 @@ public class ResponseProcessor {
 		}
 		return output;
 	}
+	
+	public UserResponse createNoValidMachineResponse(int orderID) {
+	    return new UserResponse(orderID, -1, 404, "There is no coffee machine that can service your order.");
+	}
 }

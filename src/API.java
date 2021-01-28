@@ -1,4 +1,4 @@
-
+import java.util.NoSuchElementException;
 
 public class API implements PortObserver {
 
@@ -27,16 +27,16 @@ public class API implements PortObserver {
         Command command = null;
         try {
         	command = orderProcessor.processOrder(order);
-        } catch (Exception e) {
-        	System.out.println("No Valid Coffee Machine");
+        	Controller target = controllerProcessor.getAssignedController(command);
+            
+            DrinkResponse machineResponse = target.trySendCommand(command);
+            userResponse = responseProcessor.processResponse(machineResponse, command.coffeeID);
+        } catch (NoSuchElementException e) {
+        	userResponse = responseProcessor.createNoValidMachineResponse(order.orderID);
         }
         
-        Controller target = controllerProcessor.getAssignedController(command);
-        
-        DrinkResponse machineResponse = target.trySendCommand(command);
-        userResponse = responseProcessor.processResponse(machineResponse, command.coffeeID);
-        
         sendUserResponse(userResponse);
+        
     }
 
     private void sendUserResponse(UserResponse userResponse) {
