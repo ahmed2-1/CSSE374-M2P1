@@ -45,6 +45,7 @@ public class PortWatcher {
     	System.out.println("Order Recieved");
     	System.out.println("Continue? (y/n)");
     	String cont = scanner.nextLine();
+    	System.out.println();
     	return cont.equals("y");
     	
     }
