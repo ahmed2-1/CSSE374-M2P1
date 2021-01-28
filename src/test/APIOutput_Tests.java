@@ -93,7 +93,6 @@ class APIOutput_Tests {
 
         } catch (Exception e) {
             e.printStackTrace();
-
             fail("Exception occured during user response comparison");
         }
     }
