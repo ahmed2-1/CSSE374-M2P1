@@ -1,5 +1,6 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.Map;
 import java.util.Scanner;
 
 import com.github.cliftonlabs.json_simple.JsonObject;
@@ -36,28 +37,27 @@ public class PortWatcher {
 		}
     	
     	System.out.println(input.toString());
-    	scanner.nextLine();
-    	return true;
+    	Order order = convertFromJson(input);
+    	observer.recieveOrder(order);
+    	System.out.println();
+    	System.out.println("Continue? (y/n)");
+    	String cont = scanner.nextLine();
+    	return cont.equals("y");
     	
-        
-//		System.out.println(String.format("Processing order %d", currentOrder));
-//    	System.out.println("Please enter a drink name:");
-//    	String drink = scanner.nextLine();
-//    	System.out.println("Please enter an address:");
-//    	String address = scanner.nextLine();
-//    	System.out.println("Please enter the zipcode:");
-//    	int zip = scanner.nextInt();
-//    	scanner.nextLine();
-//    	
-//    	Order o = new Order(currentOrder++, address, zip, drink);
-//    	
-//    	observer.recieveOrder(o);
-//    	System.out.println();
-//    	    	
-//        System.out.println("Continue? (y/n)");
-//        String cont = scanner.nextLine();
-//        return cont.equals("y");
+    }
+    
+    private Order convertFromJson(JsonObject obj) {
+    	JsonObject details = (JsonObject) obj.getMap(CoffeeOrderKey.ORDER);
+    	Integer orderId = details.getInteger(CoffeeOrderKey.ORDERID);
     	
+    	JsonObject addressObj = (JsonObject) details.getMap(CoffeeOrderKey.ADDRESS);
+    	String address = addressObj.getString(CoffeeOrderKey.STREET);
+    	Integer zipcode = addressObj.getInteger(CoffeeOrderKey.ZIP);
+    	
+    	String drink = details.getString(CoffeeOrderKey.DRINK);
+    	
+    	
+    	return new Order(orderId, address, zipcode, drink);
     }
     
 }
