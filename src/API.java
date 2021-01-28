@@ -1,4 +1,9 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.NoSuchElementException;
+
+import com.github.cliftonlabs.json_simple.JsonObject;
 
 public class API implements PortObserver {
 
@@ -40,7 +45,26 @@ public class API implements PortObserver {
     }
 
     private void sendUserResponse(UserResponse userResponse) {
-        System.out.println(userResponse);
+        
+        JsonObject json = new JsonObject();
+        
+        json.put("orderID", userResponse.orderID);
+        json.put("coffee_machine_id", userResponse.coffeeID);
+        json.put("status", userResponse.status);
+        json.put("status-message", userResponse.statusMessage);
+        if(userResponse.status != 0) {
+            json.put("error-message", userResponse.errorMessage);
+        }
+        
+        String str = json.toString();
+        BufferedWriter writer;
+        try {
+            writer = new BufferedWriter(new FileWriter("src/jsons/api-user-response-output.json"));
+            writer.write(str);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
 }
