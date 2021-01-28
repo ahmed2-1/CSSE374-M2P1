@@ -9,9 +9,8 @@ public class ControllerDatabase {
     List<Controller> controllers;
     
     public ControllerDatabase(String connectionString) {
-        
+        controllers = new ArrayList<Controller>();
         populateControllers(connectionString);
-
     }
     
     private void populateControllers(String connectionString) {
@@ -27,7 +26,7 @@ public class ControllerDatabase {
                 
                 String[] details = line.split(";");
                 String type = details[0];
-                String address = details[0];
+                String address = details[1];
                 
                 if(type.equals("SIMPLE")) {
                     controllers.add(new SimpleController(currentId, address));
@@ -51,8 +50,9 @@ public class ControllerDatabase {
     }
 
     public int findCompatibleController(String address, int zip, List<Option> condiments) {
+        
         for(Controller c : controllers) {
-            if(c.getAddress().equals(address + zip)) {
+            if(c.getAddress().equals(address + " " + zip)) {
                 if(c.canProcessCondiments(condiments)) {
                     return c.getId();
                 }
@@ -64,6 +64,10 @@ public class ControllerDatabase {
     
     public List<Controller> getAllControllers() {
         return controllers;
+    }
+
+    public Controller getControllerById(int controllerID) {
+        return controllers.get(controllerID-1);
     }
     
 }
