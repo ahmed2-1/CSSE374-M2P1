@@ -1,12 +1,11 @@
 
-import java.io.*;
 import java.util.List;
 
 import java.util.concurrent.TimeoutException;
 
 public abstract class Controller {
 	
-    private final int timeoutSeconds = 30;
+   
     
     private int id;
     private String address;

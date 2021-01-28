@@ -1,4 +1,4 @@
-import com.github.cliftonlabs.json_simple.JsonObject;
+
 
 public class API implements PortObserver {
 
@@ -24,7 +24,13 @@ public class API implements PortObserver {
     public void recieveOrder(Order order) {
         
         UserResponse userResponse;
-        Command command = orderProcessor.processOrder(order);
+        Command command = null;
+        try {
+        	command = orderProcessor.processOrder(order);
+        } catch (Exception e) {
+        	System.out.println("No Valid Coffee Machine ");
+        }
+        
         Controller target = controllerProcessor.getAssignedController(command);
         
         DrinkResponse machineResponse = target.trySendCommand(command);
