@@ -42,7 +42,7 @@ public class PortWatcher {
     	
     	Order order = convertFromJson(input);
     	observer.recieveOrder(order);
-    	System.out.println();
+    	System.out.println("Order Recieved");
     	System.out.println("Continue? (y/n)");
     	String cont = scanner.nextLine();
     	return cont.equals("y");
