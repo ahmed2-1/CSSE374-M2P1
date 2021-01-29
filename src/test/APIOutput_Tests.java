@@ -114,12 +114,12 @@ class APIOutput_Tests {
 
     @Test 
     void testSimpleMachineJam() {
-        testWithInputs("src/jsons/order3.json", controllerCommandPath, userResponsePath, "src/data/test-controllers1.txt");
+        testWithInputs("src/jsons/order3.json", "src/jsons/command3.json", "src/jsons/user-response3.json", "src/data/test-controllers1.txt");
     }
 
     @Test
     void testAdvancedMachineJam() {
-        testWithInputs("src/jsons/order4.json", controllerCommandPath, userResponsePath, "src/data/test-controllers1.txt");
+        testWithInputs("src/jsons/order4.json", "src/jsons/command4.json", "src/jsons/user-response4.json", "src/data/test-controllers1.txt");
     }
 
 
