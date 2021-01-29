@@ -2,7 +2,7 @@
   "drinkresponse": {
     "orderID": 3,
     "status": 1,
-    "errordesc": "Machine jammed",
+    "errordesc": "Machine jammed.",
     "errorcode": 2
   }
 }
