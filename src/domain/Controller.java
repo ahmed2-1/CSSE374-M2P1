@@ -32,10 +32,8 @@ public abstract class Controller {
 
         try {
             response = recieveCommand(command);
-
-            
         } catch (TimeoutException e) {
-            //make timeout error and put in response
+            response = new DrinkResponse(command.orderID, 1, 2, "Timed out");
         }
         
 
