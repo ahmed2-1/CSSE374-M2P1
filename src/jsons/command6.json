@@ -1,0 +1,19 @@
+{
+  "command": {
+    "controller_id": 2,
+    "coffee_machine_id": 1,
+    "orderID": 1,
+    "DrinkName": "Large Latte",
+    "Requesttype": "Programmable",
+    "Options:": [
+        {"Name": "hazelnut", "qty": 4}
+    ],
+    "Recipe": [
+        {"commandstep": "steam", "object": "milk"},
+        {"commandstep": "steam", "object": "milk"},
+        {"commandstep": "add", "object": "expresso"},
+        {"commandstep": "add", "object": "expresso"},
+        {"commandstep": "mix"},
+        {"commandstep": "top", "object": "whipped cream"}
+    ]
+}}
