@@ -1,8 +1,18 @@
 {
-  "user-response": {
-    "orderID": 6,
-    "coffee_machine_id": 2,
-    "status": 0,
-    "status-message": "Your coffee has been prepared with your desired options."
-  }
+  "order": { "orderID": 6,
+            "address": {
+                  "street": "200 N Main",
+                  "ZIP": 47803
+            },
+            "drink": "Regular Latte",
+            "condiments": [
+                {"Name": "hazelnut", "qty": 2}
+            ],
+            
+            "Recipe": [
+                 {"commandstep": "steam", "object": "milk"},
+                 {"commandstep": "add", "object": "expresso"},
+                 {"commandstep": "top", "object": "whipped cream"}
+            ]
+            }
 }
