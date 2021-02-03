@@ -4,16 +4,20 @@ import java.util.*;
 
 import domain.AdvancedController;
 import domain.Controller;
+import domain.ControllerFactory;
 import domain.Option;
 import domain.SimpleController;
 
 public class ControllerDatabase {
     
     List<Controller> controllers;
+    Map<String, ControllerFactory> factories;
     
     public ControllerDatabase(String connectionString) {
         controllers = new ArrayList<Controller>();
         populateControllers(connectionString);
+        
+        factories = new HashMap<String, ControllerFactory>();
     }
     
     private void populateControllers(String connectionString) {
@@ -31,12 +35,16 @@ public class ControllerDatabase {
                 String type = details[0];
                 String address = details[1];
                 
-                if(type.equals("SIMPLE")) {
-                    controllers.add(new SimpleController(currentId, address));
+                try {
+                    Controller newController = factories.get(type).createController();
+                    newController.setID(currentId);
+                    newController.setAddress(address);
+                    
+                    controllers.add(newController);
                     currentId++;
-                } else if(type.equals("ADVANCED")) {
-                    controllers.add(new AdvancedController(currentId, address));
-                    currentId++;
+                }
+                catch(NullPointerException e) {
+                    
                 }
                 
                 line = fr.readLine();

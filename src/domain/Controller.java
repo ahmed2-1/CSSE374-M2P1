@@ -13,9 +13,8 @@ public abstract class Controller {
     private int id;
     private String address;
 
-    public Controller(int id, String address) {
-        this.id = id;
-        this.address = address;
+    public Controller() {
+
     }
 
     public String getAddress() {
@@ -62,6 +61,14 @@ public abstract class Controller {
         }
 
         return response;
+    }
+
+    public void setID(int newId) {
+      this.id = newId;
+    }
+    
+    public void setAddress(String newAddress) {
+        this.address = newAddress;
     }
 
 
