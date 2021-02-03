@@ -17,7 +17,7 @@ public class AdvancedController extends Controller {
         json.put("controller_id", command.controllerID);
         json.put("coffee_machine_id", command.coffeeID);
         json.put("orderID", command.orderID);
-        json.put("DrinkName", command.drinkName);
+        json.put("DrinkName", command.drink.getDrinkName());
         json.put("Requesttype", command.requestType);
 
         JsonArray ar = new JsonArray();

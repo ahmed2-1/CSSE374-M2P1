@@ -92,6 +92,8 @@ public class PortWatcher {
         drink.setName(drinkName);
         drink.setCondiments(options);
         
+        //TODO: add instructions
+        
         return new Order(orderId, address, zipcode, drink);
     }
 
