@@ -1,9 +1,13 @@
 package data;
 
+import java.util.ArrayList;
+
+import domain.Option;
+
 public abstract class DrinkInstructionDecorator implements Drink {
 
-    private Drink wrapee;
-    private String ingredient;
+    protected Drink wrapee;
+    protected String ingredient;
     
     public DrinkInstructionDecorator(Drink wrapee, String ingredient) {
         this.wrapee = wrapee;
@@ -16,5 +20,14 @@ public abstract class DrinkInstructionDecorator implements Drink {
         return this.ingredient;
     }
     
+    @Override
+    public ArrayList<ArrayList<String>> getSteps() {
+        return new ArrayList<ArrayList<String>>(); //TODO: actually do something;
+    }
+    
+    @Override
+    public ArrayList<Option> getCondiments() {
+        return wrapee.getCondiments();
+    }
     
 }
