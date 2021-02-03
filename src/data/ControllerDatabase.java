@@ -3,10 +3,13 @@ import java.io.*;
 import java.util.*;
 
 import domain.AdvancedController;
+import domain.AdvancedControllerFactory;
 import domain.Controller;
 import domain.ControllerFactory;
 import domain.Option;
+import domain.ProgrammableControllerFactory;
 import domain.SimpleController;
+import domain.SimpleControllerFactory;
 
 public class ControllerDatabase {
     
@@ -18,6 +21,9 @@ public class ControllerDatabase {
         populateControllers(connectionString);
         
         factories = new HashMap<String, ControllerFactory>();
+        factories.put("SIMPLE", new SimpleControllerFactory());
+        factories.put("ADVANCED", new AdvancedControllerFactory());
+        factories.put("PROGRAMMABLE", new ProgrammableControllerFactory());
     }
     
     private void populateControllers(String connectionString) {
@@ -55,8 +61,6 @@ public class ControllerDatabase {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
-        
         
     }
 

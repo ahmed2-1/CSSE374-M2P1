@@ -6,8 +6,8 @@ import com.github.cliftonlabs.json_simple.*;
 
 public class AdvancedController extends Controller {
 
-    public AdvancedController(int id, String address) {
-        super(id, address);
+    public AdvancedController() {
+        super();
     }
 
     public DrinkResponse recieveCommand(Command command) {

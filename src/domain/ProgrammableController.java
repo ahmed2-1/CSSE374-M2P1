@@ -9,9 +9,9 @@ public class ProgrammableController extends Controller {
 	private List<Option> condiments;
 	private List<String> ingredients; //TODO: Change in M3P2 to use the decorator pattern
 
-	public ProgrammableController(int id, String address) {
+	public ProgrammableController() {
 		//TODO: Change the constructor to work with the factory
-		super(id, address);
+		super();
 		condiments = new ArrayList<>();
 		ingredients = new ArrayList<>();
 	}

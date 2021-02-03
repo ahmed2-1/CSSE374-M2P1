@@ -7,8 +7,8 @@ import com.github.cliftonlabs.json_simple.*;
 
 public class SimpleController extends Controller {
 
-    public SimpleController(int id, String address) {
-        super(id, address);
+    public SimpleController() {
+        super();
     }
 
     public DrinkResponse recieveCommand(Command command) throws TimeoutException {
