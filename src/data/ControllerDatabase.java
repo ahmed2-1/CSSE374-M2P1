@@ -18,12 +18,12 @@ public class ControllerDatabase {
     
     public ControllerDatabase(String connectionString) {
         controllers = new ArrayList<Controller>();
-        populateControllers(connectionString);
         
         factories = new HashMap<String, ControllerFactory>();
         factories.put("SIMPLE", new SimpleControllerFactory());
         factories.put("ADVANCED", new AdvancedControllerFactory());
         factories.put("PROGRAMMABLE", new ProgrammableControllerFactory());
+        populateControllers(connectionString);
     }
     
     private void populateControllers(String connectionString) {
@@ -50,7 +50,7 @@ public class ControllerDatabase {
                     currentId++;
                 }
                 catch(NullPointerException e) {
-                    
+
                 }
                 
                 line = fr.readLine();
