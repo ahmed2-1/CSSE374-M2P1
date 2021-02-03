@@ -1,24 +1,20 @@
 package domain;
+
 import java.util.List;
-import java.util.ArrayList;
+
+import data.Drink;
 
 public class Order {
     int orderID;
     String streetAddress;
     int zipcode;
-    String drink;
-    List<Option> condiments;
+    Drink drink;
 
-    public Order(int orderID, String streetAddress, int zipcode, String drink) {
-        this(orderID, streetAddress, zipcode, drink, new ArrayList<Option>());
-    }
-
-    public Order(int orderID, String streetAddress, int zipcode, String drink, List<Option> condiments) {
+    public Order(int orderID, String streetAddress, int zipcode, Drink drink) {
         this.orderID = orderID;
         this.streetAddress = streetAddress;
         this.zipcode = zipcode;
         this.drink = drink;
-        this.condiments = condiments;
     }
 
     public int getOrderID() { 
@@ -33,12 +29,12 @@ public class Order {
         return this.zipcode;
     }
 
-    public String getDrink() {
+    public Drink getDrink() {
         return this.drink;
     }
 
     public List<Option> getCondiments(){
-        return this.condiments;
+        return this.drink.getCondiments();
     }
 
 }

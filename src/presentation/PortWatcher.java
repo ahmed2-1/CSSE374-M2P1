@@ -6,6 +6,8 @@ import java.util.*;
 
 import com.github.cliftonlabs.json_simple.*;
 
+import data.Coffee;
+import data.Drink;
 import domain.Option;
 import domain.Order;
 import domain.OrderKey;
@@ -72,7 +74,7 @@ public class PortWatcher {
         String address = addressObj.getString(OrderKey.STREET);
         Integer zipcode = addressObj.getInteger(OrderKey.ZIP);
 
-        String drink = details.getString(OrderKey.DRINK);
+        String drinkName = details.getString(OrderKey.DRINK);
 
         JsonArray condiments = (JsonArray) details.getCollection(OrderKey.CONDIMENTS);
         ArrayList<Option> options = new ArrayList<>();
@@ -86,8 +88,11 @@ public class PortWatcher {
             }
         }
 
-
-        return new Order(orderId, address, zipcode, drink, options);
+        Drink drink = new Coffee();
+        drink.setName(drinkName);
+        drink.setCondiments(options);
+        
+        return new Order(orderId, address, zipcode, drink);
     }
 
     public void subscribe(PortObserver observer) {

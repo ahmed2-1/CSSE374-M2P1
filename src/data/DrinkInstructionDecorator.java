@@ -30,4 +30,14 @@ public abstract class DrinkInstructionDecorator implements Drink {
         return wrapee.getCondiments();
     }
     
+    @Override
+    public void setName(String drinkName) {
+        wrapee.setName(drinkName);
+    }
+    
+    @Override
+    public void setCondiments(ArrayList<Option> options) {
+        wrapee.setCondiments(options);
+    }
+    
 }
