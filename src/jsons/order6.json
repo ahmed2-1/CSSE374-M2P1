@@ -1,0 +1,18 @@
+{
+  "order": { "orderID": 6,
+            "address": {
+                  "street": "200 N Main",
+                  "ZIP": 47803
+            },
+            "drink": "Regular Latte",
+            "condiments": [
+                {"Name": "hazelnut", "qty": 2}
+            ],
+            
+            "Recipe": [
+                 {"commandstep": "steam", "object": "milk"},
+                 {"commandstep": "add", "object": "expresso"},
+                 {"commandstep": "top", "object": "whipped cream"}
+            ]
+            }
+}
