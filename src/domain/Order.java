@@ -10,11 +10,7 @@ public class Order {
     List<Option> condiments;
 
     public Order(int orderID, String streetAddress, int zipcode, String drink) {
-        this.orderID = orderID;
-        this.streetAddress = streetAddress;
-        this.zipcode = zipcode;
-        this.drink = drink;
-        this.condiments = new ArrayList<Option>();
+        this(orderID, streetAddress, zipcode, drink, new ArrayList<Option>());
     }
 
     public Order(int orderID, String streetAddress, int zipcode, String drink, List<Option> condiments) {

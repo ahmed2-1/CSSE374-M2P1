@@ -25,10 +25,8 @@ class APIOutput_Tests {
     }
 
     private JsonObject readFile(String path) {
-        BufferedReader input = null;
         try {
-            input = new BufferedReader(new FileReader(path));
-            return  (JsonObject) Jsoner.deserialize(input);
+            return  (JsonObject) Jsoner.deserialize(new FileReader(path));
         } catch (Exception e) {
             e.printStackTrace();
             fail("Failed to process file " + path);
