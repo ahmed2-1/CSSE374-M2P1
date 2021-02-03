@@ -96,13 +96,11 @@ class APIOutput_Tests {
 
     @Test
     void testAdvancedSuccess() {
-        //TODO: make not refer to itself
         testWithInputs("src/jsons/order1.json", "src/jsons/command1.json", "src/jsons/user-response1.json", "src/data/test-controllers1.txt");
     }
 
     @Test
     void testSimpleSuccess() {
-        //TODO: make not refer to itself
         testWithInputs("src/jsons/order2.json", "src/jsons/command2.json", "src/jsons/user-response2.json", "src/data/test-controllers1.txt");
     }
 
