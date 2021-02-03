@@ -3,15 +3,17 @@
     "controller_id": 2,
     "coffee_machine_id": 1,
     "orderID": 1,
-    "DrinkName": "Pumpkin Spice",
+    "DrinkName": "Large Latte",
     "Requesttype": "Programmable",
     "Options:": [
-        {"Name": "sugar", "qty": 2}
+        {"Name": "hazelnut", "qty": 4}
     ],
     "Recipe": [
-        {"commandstep": "add", "object": "coffee"},
-        {"commandstep": "add", "object": "pumpkin spice"},
+        {"commandstep": "steam", "object": "milk"},
+        {"commandstep": "steam", "object": "milk"},
+        {"commandstep": "add", "object": "expresso"},
+        {"commandstep": "add", "object": "expresso"},
         {"commandstep": "mix"},
-        {"commandstep": "top", "object": "nutmeg"}
+        {"commandstep": "top", "object": "whipped cream"}
     ]
 }}
