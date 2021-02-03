@@ -108,8 +108,6 @@ public class PortWatcher {
             }
         }
         
-        System.out.println(drink.getSteps());
-        
         return new Order(orderId, address, zipcode, drink);
     }
 
