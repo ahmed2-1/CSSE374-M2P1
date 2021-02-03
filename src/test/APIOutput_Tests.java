@@ -117,6 +117,11 @@ class APIOutput_Tests {
     void testAdvancedMachineJam() {
         testWithInputs("src/jsons/order4.json", "src/jsons/command4.json", "src/jsons/user-response4.json", "src/data/test-controllers1.txt");
     }
+    
+    @Test
+    void testProgrammableCoffeeMachineSuccess() {
+        testWithInputs("src/jsons/order6.json", "src/jsons/command6.json", "src/jsons/user-response6.json", "src/data/test-controllers3.txt");
+    }
 
 
 }
