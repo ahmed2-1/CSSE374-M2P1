@@ -8,6 +8,7 @@ import com.github.cliftonlabs.json_simple.*;
 
 import data.Coffee;
 import data.Drink;
+import data.SteamInstruction;
 import domain.Option;
 import domain.Order;
 import domain.OrderKey;
@@ -95,7 +96,19 @@ public class PortWatcher {
         drink.setName(drinkName);
         drink.setCondiments(options);
         
-        //TODO: add instructions
+        //TODO: add more instructions
+        if(recipe != null) {
+            for (Object o : recipe) {
+                JsonObject cond = (JsonObject) o;
+                String command = cond.getString(OrderKey.COMMANDSTEP);
+                String ingredient = cond.getString(OrderKey.OBJECT);
+                
+                //TODO check what command
+                drink = new SteamInstruction(drink, ingredient);
+            }
+        }
+        
+        System.out.println(drink.getSteps());
         
         return new Order(orderId, address, zipcode, drink);
     }

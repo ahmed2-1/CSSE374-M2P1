@@ -21,7 +21,6 @@ public class Coffee implements Drink {
 
     @Override
     public ArrayList<ArrayList<String>> getSteps() {
-        // TODO Auto-generated method stub
         return new ArrayList<ArrayList<String>>();
     }
 

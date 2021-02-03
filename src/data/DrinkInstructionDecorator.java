@@ -22,7 +22,14 @@ public abstract class DrinkInstructionDecorator implements Drink {
     
     @Override
     public ArrayList<ArrayList<String>> getSteps() {
-        return new ArrayList<ArrayList<String>>(); //TODO: actually do something;
+        ArrayList<ArrayList<String>> currentSteps = wrapee.getSteps();
+        ArrayList<String> thisStep = new ArrayList<String>();
+        
+        thisStep.add(this.getStepName());
+        thisStep.add(this.getIngredient());
+        currentSteps.add(thisStep);
+        
+        return currentSteps;
     }
     
     @Override
