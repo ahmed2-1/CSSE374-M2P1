@@ -23,7 +23,7 @@ public class ControllerDatabase {
         factories.put("SIMPLE", new SimpleControllerFactory());
         factories.put("ADVANCED", new AdvancedControllerFactory());
         factories.put("PROGRAMMABLE", new ProgrammableControllerFactory());
-        populateControllers(connectionString);
+        populateControllers(connectionString); 
     }
     
     private void populateControllers(String connectionString) {
