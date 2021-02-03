@@ -11,7 +11,8 @@ public enum OrderKey implements JsonKey {
     DRINK ("drink"),
     CONDIMENTS("condiments"),
     NAME ("name"),
-    QUANTITY ("qty");
+    QUANTITY ("qty"),
+    RECIPE ("Recipe");
     
     private final String key;
     

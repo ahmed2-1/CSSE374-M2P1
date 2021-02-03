@@ -12,10 +12,12 @@ public class OrderProcessor {
     }
 
     public Command processOrder(Order order) {
-        int controllerID = database.findCompatibleController(order.getStreetAddress(),  order.getZipcode(), order.getCondiments());
+        int controllerID = database.findCompatibleController(order.getStreetAddress(),  order.getZipcode(), order.getDrink());
         if (order.getCondiments().isEmpty())
             return new Command(controllerID, 1, order.getOrderID(), order.getDrink(), "Simple");
-        else
+        if (order.getDrink().getSteps().isEmpty())
             return new Command(controllerID, 1, order.getOrderID(), order.getDrink(), "Automated", order.getCondiments());
+        else
+            return new Command(controllerID, 1, order.getOrderID(), order.getDrink(), "Programmable", order.getCondiments());
     }
 }

@@ -87,6 +87,9 @@ public class PortWatcher {
                 options.add(new Option(name, qty));
             }
         }
+        
+        JsonArray recipe = (JsonArray) details.getCollection(OrderKey.RECIPE);
+
 
         Drink drink = new Coffee();
         drink.setName(drinkName);

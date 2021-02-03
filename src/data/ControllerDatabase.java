@@ -64,11 +64,11 @@ public class ControllerDatabase {
         
     }
 
-    public int findCompatibleController(String address, int zip, List<Option> condiments) {
+    public int findCompatibleController(String address, int zip, Drink drink) {
         
         for(Controller c : controllers) {
             if(c.getAddress().equals(address + " " + zip)) {
-                if(c.canProcessCondiments(condiments)) {
+                if(c.canProcessCondiments(drink.getCondiments())) {
                     return c.getId();
                 }
             }
