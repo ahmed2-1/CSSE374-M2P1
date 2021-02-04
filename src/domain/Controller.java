@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import java.util.concurrent.TimeoutException;
@@ -41,7 +42,9 @@ public abstract class Controller {
 
     abstract DrinkResponse recieveCommand(Command command) throws TimeoutException;
 
-    public abstract boolean canProcessCondiments(List<Option> condiments);
+    public boolean canProcessCondiments(List<Option> condiments) {
+        return condiments.isEmpty();
+    }
 
     public DrinkResponse convertFromJson(JsonObject input) {
         DrinkResponse response;
@@ -69,6 +72,10 @@ public abstract class Controller {
     
     public void setAddress(String newAddress) {
         this.address = newAddress;
+    }
+
+    public boolean canProcessSteps(ArrayList<ArrayList<String>> steps) {
+        return steps.isEmpty();
     }
 
 

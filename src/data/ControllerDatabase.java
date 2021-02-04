@@ -68,7 +68,7 @@ public class ControllerDatabase {
         
         for(Controller c : controllers) {
             if(c.getAddress().equals(address + " " + zip)) {
-                if(c.canProcessCondiments(drink.getCondiments())) {
+                if(c.canProcessCondiments(drink.getCondiments()) && c.canProcessSteps(drink.getSteps())) {
                     return c.getId();
                 }
             }

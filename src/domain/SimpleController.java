@@ -56,9 +56,4 @@ public class SimpleController extends Controller {
         DrinkResponse response = convertFromJson(input);
         return response;
     }
-
-    @Override
-    public boolean canProcessCondiments(List<Option> condiments) {
-        return condiments.isEmpty();
-    }
 }

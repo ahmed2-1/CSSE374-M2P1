@@ -73,8 +73,12 @@ public class ProgrammableController extends Controller {
 
 	@Override
 	public boolean canProcessCondiments(List<Option> condiments) {
-		// TODO Auto-generated method stub
 		return true;
+	}
+	
+	@Override
+    public boolean canProcessSteps(ArrayList<ArrayList<String>> steps) {
+	    return true;
 	}
 
 }
