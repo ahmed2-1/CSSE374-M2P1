@@ -4,7 +4,12 @@ import java.util.NoSuchElementException;
 
 import com.github.cliftonlabs.json_simple.*;
 
+import data.Command;
+import data.Controller;
 import data.ControllerDatabase;
+import data.DrinkResponse;
+import data.Order;
+import data.UserResponse;
 import presentation.PortWatcher;
 
 public class API implements PortObserver {

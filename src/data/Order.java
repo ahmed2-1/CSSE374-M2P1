@@ -1,14 +1,12 @@
-package domain;
+package data;
 
 import java.util.List;
 
-import data.Drink;
-
 public class Order {
-    int orderID;
-    String streetAddress;
-    int zipcode;
-    Drink drink;
+    public int orderID;
+    public String streetAddress;
+    public int zipcode;
+    public Drink drink;
 
     public Order(int orderID, String streetAddress, int zipcode, Drink drink) {
         this.orderID = orderID;

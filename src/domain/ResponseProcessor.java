@@ -1,5 +1,8 @@
 package domain;
 
+import data.DrinkResponse;
+import data.UserResponse;
+
 public class ResponseProcessor {
 
     public ResponseProcessor() {

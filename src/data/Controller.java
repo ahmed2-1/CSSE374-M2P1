@@ -1,4 +1,4 @@
-package domain;
+package data;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.concurrent.TimeoutException;
 
 import com.github.cliftonlabs.json_simple.JsonObject;
+
+import domain.DrinkResponseKey;
 
 public abstract class Controller {
 

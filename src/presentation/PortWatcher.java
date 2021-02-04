@@ -8,9 +8,9 @@ import com.github.cliftonlabs.json_simple.*;
 
 import data.Coffee;
 import data.Drink;
+import data.Option;
+import data.Order;
 import data.SteamInstruction;
-import domain.Option;
-import domain.Order;
 import domain.OrderKey;
 import domain.PortObserver;
 

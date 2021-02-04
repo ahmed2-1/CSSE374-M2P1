@@ -1,11 +1,11 @@
-package domain;
+package data;
 
 public class UserResponse {
-    int orderID;
-    int coffeeID;
-    int status;
-    String statusMessage;
-    String errorMessage;
+    public int orderID;
+    public int coffeeID;
+    public int status;
+    public String statusMessage;
+    public String errorMessage;
 
     public UserResponse(int orderID, int coffeeID, int status) {
         this.orderID = orderID;

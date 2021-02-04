@@ -2,8 +2,6 @@ package data;
 
 import java.util.ArrayList;
 
-import domain.Option;
-
 public class Coffee implements Drink {
 
     private String name;

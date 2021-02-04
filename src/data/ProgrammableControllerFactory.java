@@ -1,4 +1,4 @@
-package domain;
+package data;
 
 public class ProgrammableControllerFactory implements ControllerFactory {
 

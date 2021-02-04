@@ -1,4 +1,4 @@
-package domain;
+package data;
 
 public class SimpleControllerFactory implements ControllerFactory {
 

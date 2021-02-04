@@ -2,8 +2,6 @@ package data;
 
 import java.util.ArrayList;
 
-import domain.Option;
-
 public abstract class DrinkInstructionDecorator implements Drink {
 
     protected Drink wrapee;

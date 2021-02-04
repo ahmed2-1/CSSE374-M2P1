@@ -2,15 +2,6 @@ package data;
 import java.io.*;
 import java.util.*;
 
-import domain.AdvancedController;
-import domain.AdvancedControllerFactory;
-import domain.Controller;
-import domain.ControllerFactory;
-import domain.Option;
-import domain.ProgrammableControllerFactory;
-import domain.SimpleController;
-import domain.SimpleControllerFactory;
-
 public class ControllerDatabase {
     
     List<Controller> controllers;

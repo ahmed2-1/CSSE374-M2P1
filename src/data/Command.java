@@ -1,17 +1,14 @@
-package domain;
+package data;
 import java.util.List;
-
-import data.Drink;
-
 import java.util.ArrayList;
 
 public class Command {
-    int controllerID;
-    int coffeeID;
-    int orderID;
-    Drink drink;
-    String requestType;
-    List<Option> options;
+    public int controllerID;
+    public int coffeeID;
+    public int orderID;
+    public Drink drink;
+    public String requestType;
+    public List<Option> options;
 
     public Command(int controllerID, int coffeeID, int orderID, Drink drink, String requestType) {
         this(controllerID, coffeeID, orderID, drink, requestType, new ArrayList<Option>());
