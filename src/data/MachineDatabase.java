@@ -14,10 +14,10 @@ public class MachineDatabase {
         factories.put("SIMPLE", new SimpleMachineFactory());
         factories.put("ADVANCED", new AdvancedMachineFactory());
         factories.put("PROGRAMMABLE", new ProgrammableMachineFactory());
-        populateControllers(connectionString); 
+        populateMachines(connectionString); 
     }
     
-    private void populateControllers(String connectionString) {
+    private void populateMachines(String connectionString) {
         
         BufferedReader fr;
         try {
@@ -29,15 +29,17 @@ public class MachineDatabase {
             while(line != null) {
                 
                 String[] details = line.split(";");
-                String type = details[0];
-                String address = details[1];
+                String controllerId = details[0];
+                String type = details[1];
+                String address = details[2];
                 
                 try {
-                    Machine newController = factories.get(type).createController();
-                    newController.setID(currentId);
-                    newController.setAddress(address);
+                    Machine newMachine = factories.get(type).createMachine();
+                    newMachine.setControllerID(Integer.parseInt(controllerId));
+                    newMachine.setID(currentId);
+                    newMachine.setAddress(address);
                     
-                    controllers.add(newController);
+                    controllers.add(newMachine);
                     currentId++;
                 }
                 catch(NullPointerException e) {

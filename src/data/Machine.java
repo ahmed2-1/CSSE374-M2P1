@@ -14,6 +14,7 @@ public abstract class Machine {
 
 
     private int id;
+    private int controllerId;
     private String address;
 
     public Machine() {
@@ -25,6 +26,10 @@ public abstract class Machine {
     }
 
     public int getId() {
+        return id;
+    }
+    
+    public int getControllerId() {
         return id;
     }
 
@@ -71,6 +76,10 @@ public abstract class Machine {
     public void setID(int newId) {
       this.id = newId;
     }
+    
+    public void setControllerID(int newId) {
+        this.controllerId = newId;
+      }
     
     public void setAddress(String newAddress) {
         this.address = newAddress;

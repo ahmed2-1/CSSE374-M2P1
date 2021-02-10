@@ -2,6 +2,6 @@ package data;
 
 public interface MachineFactory {
 
-    Machine createController();
+    Machine createMachine();
     
 }
