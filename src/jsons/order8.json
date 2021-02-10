@@ -1,0 +1,19 @@
+{
+  "order": { "orderID": 8,
+            "address": {
+                  "street": "200 N Main",
+                  "ZIP": 47803
+            },
+            "drink": "Pumpkin Spice",
+            "condiments": [
+                {"Name": "sugar", "qty": 2}
+            ],
+            
+			"Recipe": [
+		        {"commandstep": "add", "object": "coffee"},
+		        {"commandstep": "add", "object": "pumpkin spice"},
+		        {"commandstep": "mix"},
+		        {"commandstep": "top", "object": "nutmeg"}
+		    ]
+            }
+}

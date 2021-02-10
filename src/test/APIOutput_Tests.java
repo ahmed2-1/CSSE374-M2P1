@@ -121,6 +121,8 @@ class APIOutput_Tests {
     @Test
     void testProgrammableCoffeeMachineSuccess() {
         testWithInputs("src/jsons/order6.json", "src/jsons/command6.json", "src/jsons/user-response6.json", "src/data/test-controllers3.txt");
+        testWithInputs("src/jsons/order7.json", "src/jsons/command7.json", "src/jsons/user-response7.json", "src/data/test-controllers3.txt");
+    	testWithInputs("src/jsons/order8.json", "src/jsons/command8.json", "src/jsons/user-response8.json", "src/data/test-controllers3.txt");
     }
 
 
