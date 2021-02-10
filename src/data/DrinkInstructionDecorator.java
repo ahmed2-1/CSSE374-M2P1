@@ -24,7 +24,9 @@ public abstract class DrinkInstructionDecorator implements Drink {
         ArrayList<String> thisStep = new ArrayList<String>();
         
         thisStep.add(this.getStepName());
-        thisStep.add(this.getIngredient());
+        if(this.getIngredient() != null) {
+            thisStep.add(this.getIngredient());
+        }
         currentSteps.add(thisStep);
         
         return currentSteps;
