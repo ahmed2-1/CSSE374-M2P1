@@ -67,6 +67,8 @@ class APIOutput_Tests {
             assertEquals(innerExpected.get("orderID"), innerActual.get("orderID"));
             assertEquals(innerExpected.get("DrinkName"), innerActual.get("DrinkName"));
             assertEquals(innerExpected.get("Requesttype"), innerActual.get("Requesttype"));
+            
+            assertEquals(innerExpected.get("Recipe"), innerActual.get("Recipe"));
 
         } catch (Exception e) {
             fail("Exception occurred during command comparison");
