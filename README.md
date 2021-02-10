@@ -1,4 +1,4 @@
-# CSSE374-M2P2
+# CSSE374-M3P2
 
 ## Testing
 All system tests are in **APIOutput_Tests.java**
