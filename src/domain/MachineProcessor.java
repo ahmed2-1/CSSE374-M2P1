@@ -5,11 +5,11 @@ import data.Command;
 import data.Machine;
 import data.MachineDatabase;
 
-public class ControllerProcessor {
+public class MachineProcessor {
 
     private MachineDatabase database;
     
-    public ControllerProcessor(MachineDatabase database) {
+    public MachineProcessor(MachineDatabase database) {
         this.database = database;
     }
     

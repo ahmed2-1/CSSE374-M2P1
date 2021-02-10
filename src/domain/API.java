@@ -14,7 +14,7 @@ import presentation.PortWatcher;
 
 public class API implements PortObserver {
 
-    ControllerProcessor controllerProcessor;
+    MachineProcessor controllerProcessor;
     ResponseProcessor responseProcessor;
     OrderProcessor orderProcessor;
     
@@ -23,7 +23,7 @@ public class API implements PortObserver {
         MachineDatabase controllerDatabase = database;
         
         orderProcessor = new OrderProcessor(controllerDatabase);
-        controllerProcessor = new ControllerProcessor(controllerDatabase);
+        controllerProcessor = new MachineProcessor(controllerDatabase);
         responseProcessor =  new ResponseProcessor();
         portWatcher.subscribe(this);
         
