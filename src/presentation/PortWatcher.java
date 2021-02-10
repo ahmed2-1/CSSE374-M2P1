@@ -6,11 +6,7 @@ import java.util.*;
 
 import com.github.cliftonlabs.json_simple.*;
 
-import data.Coffee;
-import data.Drink;
-import data.Option;
-import data.Order;
-import data.SteamInstruction;
+import data.*;
 import domain.OrderKey;
 import domain.PortObserver;
 
@@ -96,15 +92,29 @@ public class PortWatcher {
         drink.setName(drinkName);
         drink.setCondiments(options);
         
-        //TODO: add more instructions
         if(recipe != null) {
             for (Object o : recipe) {
                 JsonObject cond = (JsonObject) o;
                 String command = cond.getString(OrderKey.COMMANDSTEP);
                 String ingredient = cond.getString(OrderKey.OBJECT);
                 
-                //TODO check what command
-                drink = new SteamInstruction(drink, ingredient);
+                switch(command) {
+                    case "steam":
+                        drink = new SteamInstruction(drink, ingredient);
+                        break;
+                    case "top":
+                        drink = new TopInstruction(drink, ingredient);
+                        break;
+                    case "mix":
+                        drink = new MixInstruction(drink, ingredient);
+                        break;
+                    case "add":
+                        drink = new AddInstruction(drink, ingredient);
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Command not recognized");
+                        
+                }
             }
         }
         
