@@ -5,8 +5,8 @@ import java.util.NoSuchElementException;
 import com.github.cliftonlabs.json_simple.*;
 
 import data.Command;
-import data.Controller;
-import data.ControllerDatabase;
+import data.Machine;
+import data.MachineDatabase;
 import data.DrinkResponse;
 import data.Order;
 import data.UserResponse;
@@ -18,9 +18,9 @@ public class API implements PortObserver {
     ResponseProcessor responseProcessor;
     OrderProcessor orderProcessor;
     
-    public API(PortWatcher portWatcher, ControllerDatabase database) {
+    public API(PortWatcher portWatcher, MachineDatabase database) {
         
-        ControllerDatabase controllerDatabase = database;
+        MachineDatabase controllerDatabase = database;
         
         orderProcessor = new OrderProcessor(controllerDatabase);
         controllerProcessor = new ControllerProcessor(controllerDatabase);
@@ -36,7 +36,7 @@ public class API implements PortObserver {
         Command command = null;
         try {
         	command = orderProcessor.processOrder(order);
-        	Controller target = controllerProcessor.getAssignedController(command);
+        	Machine target = controllerProcessor.getAssignedController(command);
             
             DrinkResponse machineResponse = target.trySendCommand(command);
             userResponse = responseProcessor.processResponse(machineResponse, command.controllerID);

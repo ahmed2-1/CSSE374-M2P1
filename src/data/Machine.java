@@ -9,14 +9,14 @@ import com.github.cliftonlabs.json_simple.JsonObject;
 
 import domain.DrinkResponseKey;
 
-public abstract class Controller {
+public abstract class Machine {
 
 
 
     private int id;
     private String address;
 
-    public Controller() {
+    public Machine() {
 
     }
 

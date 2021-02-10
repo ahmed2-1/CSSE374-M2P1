@@ -2,18 +2,18 @@ package domain;
 import java.util.*;
 
 import data.Command;
-import data.Controller;
-import data.ControllerDatabase;
+import data.Machine;
+import data.MachineDatabase;
 
 public class ControllerProcessor {
 
-    private ControllerDatabase database;
+    private MachineDatabase database;
     
-    public ControllerProcessor(ControllerDatabase database) {
+    public ControllerProcessor(MachineDatabase database) {
         this.database = database;
     }
     
-    public Controller getAssignedController(Command command) {
+    public Machine getAssignedController(Command command) {
         return database.getControllerById(command.controllerID);
     }
     

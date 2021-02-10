@@ -1,18 +1,32 @@
 package data;
-import java.io.*;
+
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 
-import com.github.cliftonlabs.json_simple.*;
+import com.github.cliftonlabs.json_simple.JsonArray;
+import com.github.cliftonlabs.json_simple.JsonObject;
+import com.github.cliftonlabs.json_simple.Jsoner;
 
-public class SimpleController extends Controller {
+public class ProgrammableMachine extends Machine {
+	
+	private List<Option> condiments;
+	private List<String> ingredients; //TODO: Change in M3P2 to use the decorator pattern
 
-    public SimpleController() {
-        super();
-    }
+	public ProgrammableMachine() {
+		//TODO: Change the constructor to work with the factory
+		super();
+		condiments = new ArrayList<>();
+		ingredients = new ArrayList<>();
+	}
 
-    public DrinkResponse recieveCommand(Command command) throws TimeoutException {
-        JsonObject json = new JsonObject();
+	@Override
+	DrinkResponse recieveCommand(Command command) throws TimeoutException {
+	    JsonObject json = new JsonObject();
 
         json.put("controller_id", command.controllerID);
         json.put("coffee_machine_id", command.coffeeID);
@@ -54,6 +68,17 @@ public class SimpleController extends Controller {
         }
 
         DrinkResponse response = convertFromJson(input);
-        return response;
-    }
+        return response;    
+	}
+
+	@Override
+	public boolean canProcessCondiments(List<Option> condiments) {
+		return true;
+	}
+	
+	@Override
+    public boolean canProcessSteps(ArrayList<ArrayList<String>> steps) {
+	    return true;
+	}
+
 }

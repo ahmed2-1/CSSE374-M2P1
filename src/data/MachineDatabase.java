@@ -2,18 +2,18 @@ package data;
 import java.io.*;
 import java.util.*;
 
-public class ControllerDatabase {
+public class MachineDatabase {
     
-    List<Controller> controllers;
-    Map<String, ControllerFactory> factories;
+    List<Machine> controllers;
+    Map<String, MachineFactory> factories;
     
-    public ControllerDatabase(String connectionString) {
-        controllers = new ArrayList<Controller>();
+    public MachineDatabase(String connectionString) {
+        controllers = new ArrayList<Machine>();
         
-        factories = new HashMap<String, ControllerFactory>();
-        factories.put("SIMPLE", new SimpleControllerFactory());
-        factories.put("ADVANCED", new AdvancedControllerFactory());
-        factories.put("PROGRAMMABLE", new ProgrammableControllerFactory());
+        factories = new HashMap<String, MachineFactory>();
+        factories.put("SIMPLE", new SimpleMachineFactory());
+        factories.put("ADVANCED", new AdvancedMachineFactory());
+        factories.put("PROGRAMMABLE", new ProgrammableMachineFactory());
         populateControllers(connectionString); 
     }
     
@@ -33,7 +33,7 @@ public class ControllerDatabase {
                 String address = details[1];
                 
                 try {
-                    Controller newController = factories.get(type).createController();
+                    Machine newController = factories.get(type).createController();
                     newController.setID(currentId);
                     newController.setAddress(address);
                     
@@ -57,7 +57,7 @@ public class ControllerDatabase {
 
     public int findCompatibleController(String address, int zip, Drink drink) {
         
-        for(Controller c : controllers) {
+        for(Machine c : controllers) {
             if(c.getAddress().equals(address + " " + zip)) {
                 if(c.canProcessCondiments(drink.getCondiments()) && c.canProcessSteps(drink.getSteps())) {
                     return c.getId();
@@ -68,11 +68,11 @@ public class ControllerDatabase {
         throw new NoSuchElementException("No compatible controller");
     }
     
-    public List<Controller> getAllControllers() {
+    public List<Machine> getAllControllers() {
         return controllers;
     }
 
-    public Controller getControllerById(int controllerID) {
+    public Machine getControllerById(int controllerID) {
         return controllers.get(controllerID-1);
     }
     

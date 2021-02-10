@@ -1,13 +1,13 @@
 package domain;
 import data.Command;
-import data.ControllerDatabase;
+import data.MachineDatabase;
 import data.Order;
 
 public class OrderProcessor {
 
-    private ControllerDatabase database;
+    private MachineDatabase database;
 
-    public OrderProcessor(ControllerDatabase database) {
+    public OrderProcessor(MachineDatabase database) {
 
         this.database = database;
 

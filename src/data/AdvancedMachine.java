@@ -4,9 +4,9 @@ import java.util.List;
 
 import com.github.cliftonlabs.json_simple.*;
 
-public class AdvancedController extends Controller {
+public class AdvancedMachine extends Machine {
 
-    public AdvancedController() {
+    public AdvancedMachine() {
         super();
     }
 

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import com.github.cliftonlabs.json_simple.JsonObject;
 import com.github.cliftonlabs.json_simple.Jsoner;
 
-import data.ControllerDatabase;
+import data.MachineDatabase;
 import domain.API;
 import presentation.PortWatcher;
 
@@ -40,7 +40,7 @@ class APIOutput_Tests {
     void testWithInputs(String orderInPath, String expectedControllerCommandPath, String expectedUserResponsePath, String databasePath) {
 
 
-        ControllerDatabase database = new ControllerDatabase(databasePath);
+        MachineDatabase database = new MachineDatabase(databasePath);
         PortWatcher watcher = new PortWatcher(800);
         API api = new API(watcher, database);
 
