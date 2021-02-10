@@ -30,7 +30,7 @@ public abstract class Machine {
     }
     
     public int getControllerId() {
-        return id;
+        return controllerId;
     }
 
     public DrinkResponse trySendCommand(Command command) {

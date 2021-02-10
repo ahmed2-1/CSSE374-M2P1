@@ -1,7 +1,7 @@
 {
   "command": {
-    "controller_id": 2,
-    "coffee_machine_id": 1,
+    "controller_id": 1,
+    "coffee_machine_id": 2,
     "orderID": 4,
     "DrinkName": "Americano",
     "Requesttype": "Automated",

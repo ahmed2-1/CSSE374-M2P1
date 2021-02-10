@@ -4,11 +4,11 @@ import java.util.*;
 
 public class MachineDatabase {
     
-    List<Machine> controllers;
+    List<Machine> machines;
     Map<String, MachineFactory> factories;
     
     public MachineDatabase(String connectionString) {
-        controllers = new ArrayList<Machine>();
+        machines = new ArrayList<Machine>();
         
         factories = new HashMap<String, MachineFactory>();
         factories.put("SIMPLE", new SimpleMachineFactory());
@@ -39,7 +39,7 @@ public class MachineDatabase {
                     newMachine.setID(currentId);
                     newMachine.setAddress(address);
                     
-                    controllers.add(newMachine);
+                    machines.add(newMachine);
                     currentId++;
                 }
                 catch(NullPointerException e) {
@@ -57,9 +57,9 @@ public class MachineDatabase {
         
     }
 
-    public int findCompatibleController(String address, int zip, Drink drink) {
+    public int findCompatibleMachine(String address, int zip, Drink drink) {
         
-        for(Machine c : controllers) {
+        for(Machine c : machines) {
             if(c.getAddress().equals(address + " " + zip)) {
                 if(c.canProcessCondiments(drink.getCondiments()) && c.canProcessSteps(drink.getSteps())) {
                     return c.getId();
@@ -71,11 +71,15 @@ public class MachineDatabase {
     }
     
     public List<Machine> getAllControllers() {
-        return controllers;
+        return machines;
     }
 
-    public Machine getControllerById(int controllerID) {
-        return controllers.get(controllerID-1);
+    public Machine getMachineById(int machineID) {
+        return machines.get(machineID-1);
+    }
+
+    public int getControllerIDOfMachine(int machineID) {
+        return getMachineById(machineID).getControllerId();
     }
     
 }

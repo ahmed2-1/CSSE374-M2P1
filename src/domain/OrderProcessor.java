@@ -14,12 +14,14 @@ public class OrderProcessor {
     }
 
     public Command processOrder(Order order) {
-        int controllerID = database.findCompatibleController(order.getStreetAddress(),  order.getZipcode(), order.getDrink());
+        int machineID = database.findCompatibleMachine(order.getStreetAddress(),  order.getZipcode(), order.getDrink());
+        int controllerID = database.getControllerIDOfMachine(machineID);
+        
         if (order.getCondiments().isEmpty())
-            return new Command(controllerID, 1, order.getOrderID(), order.getDrink(), "Simple");
+            return new Command(controllerID, machineID, order.getOrderID(), order.getDrink(), "Simple");
         if (order.getDrink().getSteps().isEmpty())
-            return new Command(controllerID, 1, order.getOrderID(), order.getDrink(), "Automated", order.getCondiments());
+            return new Command(controllerID, machineID, order.getOrderID(), order.getDrink(), "Automated", order.getCondiments());
         else
-            return new Command(controllerID, 1, order.getOrderID(), order.getDrink(), "Programmable", order.getCondiments());
+            return new Command(controllerID, machineID, order.getOrderID(), order.getDrink(), "Programmable", order.getCondiments());
     }
 }

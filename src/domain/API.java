@@ -36,10 +36,10 @@ public class API implements PortObserver {
         Command command = null;
         try {
         	command = orderProcessor.processOrder(order);
-        	Machine target = controllerProcessor.getAssignedController(command);
+        	Machine target = controllerProcessor.getAssignedMachine(command);
             
             DrinkResponse machineResponse = target.trySendCommand(command);
-            userResponse = responseProcessor.processResponse(machineResponse, command.controllerID);
+            userResponse = responseProcessor.processResponse(machineResponse, command.coffeeID);
         } catch (NoSuchElementException e) {
         	userResponse = responseProcessor.createNoValidMachineResponse(order.orderID);
         }

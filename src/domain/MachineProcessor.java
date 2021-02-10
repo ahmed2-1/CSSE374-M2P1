@@ -13,8 +13,8 @@ public class MachineProcessor {
         this.database = database;
     }
     
-    public Machine getAssignedController(Command command) {
-        return database.getControllerById(command.controllerID);
+    public Machine getAssignedMachine(Command command) {
+        return database.getMachineById(command.coffeeID);
     }
     
 }
