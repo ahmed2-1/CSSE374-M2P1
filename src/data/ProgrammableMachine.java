@@ -13,15 +13,9 @@ import com.github.cliftonlabs.json_simple.JsonObject;
 import com.github.cliftonlabs.json_simple.Jsoner;
 
 public class ProgrammableMachine extends Machine {
-	
-	private List<Option> condiments;
-	private List<String> ingredients; //TODO: Change in M3P2 to use the decorator pattern
 
 	public ProgrammableMachine() {
-		//TODO: Change the constructor to work with the factory
 		super();
-		condiments = new ArrayList<>();
-		ingredients = new ArrayList<>();
 	}
 
 	@Override
@@ -42,9 +36,20 @@ public class ProgrammableMachine extends Machine {
             ar.add(j);
         }
         json.put("Options", ar);
+        
+        JsonArray stepArray = new JsonArray();
+        for (ArrayList<String> steps : command.drink.getSteps()) {
+        	JsonObject j = new JsonObject();
+        	j.put("commandstep", steps.get(0));
+        	if (steps.size() > 1)
+        		j.put("object", steps.get(1));
+        	stepArray.add(j);
+        }
+        json.put("Recipe", stepArray);
 
         JsonObject cj = new JsonObject();
         cj.put("command", json);
+        
 
         String str = Jsoner.serialize(cj);
         BufferedWriter writer;
