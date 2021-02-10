@@ -106,8 +106,9 @@ class APIOutput_Tests {
 
     @Test
     void testAssignmentFailure() {
-        //controller command is not sent, does not need to be tested so it is compared to itself
+        //controller command is not sent, does not need to be tested so it is compared to itself to avoid silly errors
         testWithInputs("src/jsons/order5.json", controllerCommandPath, "src/jsons/user-response5.json", "src/data/test-controllers2.txt");
+        testWithInputs("src/jsons/order6.json", controllerCommandPath, "src/jsons/user-response9.json", "src/data/test-controllers2.txt");
     }
 
     @Test 
@@ -126,6 +127,5 @@ class APIOutput_Tests {
         testWithInputs("src/jsons/order7.json", "src/jsons/command7.json", "src/jsons/user-response7.json", "src/data/test-controllers3.txt");
     	testWithInputs("src/jsons/order8.json", "src/jsons/command8.json", "src/jsons/user-response8.json", "src/data/test-controllers3.txt");
     }
-
 
 }

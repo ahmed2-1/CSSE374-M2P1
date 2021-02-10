@@ -1,0 +1,9 @@
+{
+  "user-response": {
+    "orderID": 6,
+    "coffee_machine_id": -1,
+    "status": 404,
+    "status-message": "Your coffee order has been cancelled.",
+    "error-message": "There is no coffee machine that can service your order."
+  }
+}
